@@ -1,5 +1,4 @@
 import http from './http.js';
-
 const API_POLL_URL = "/polls";
 const API_POLL_CREATE_URL = "/polls/create";
 const API_POLL_UPDATE_URL = "/polls/update";

@@ -14,11 +14,13 @@ const NavBarComponent = () => {
             <NavBar>
                 <p>Online polls</p>
                 <ul>
+                    <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Contact">Kontakt</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Login">Login</NavLink></li>
                     <li><NavLink activeClassName="active" to="/SignUp">Sign up</NavLink></li>
                     <li><p>|</p></li>
-                    <li><NavLink activeClassName="active" to="/DoPoll">Do Poll</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/Create">Create</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Home">Home</NavLink></li>
                 </ul>
             </NavBar>

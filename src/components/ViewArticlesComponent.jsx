@@ -1,0 +1,1 @@
+/* TODO add functionality for how articles are viewed */
