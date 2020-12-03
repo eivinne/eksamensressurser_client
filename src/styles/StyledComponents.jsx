@@ -383,8 +383,16 @@ export const ViewOfficesDiv = styled.div`
         
 
     }
-    .list-element-view-container{
-        
+    .list-element-view-grid{
+        display:inline-flex;
+        border-radius:5px;
+        border: 2px solid black;
+        padding:1em;
+        margin:2em;
+
+    }
+    .list-element-view-list{
+        display:block;
         border-radius:5px;
         border: 2px solid black;
         padding:1em;

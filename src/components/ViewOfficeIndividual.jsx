@@ -1,6 +1,6 @@
 const ViewOfficeIndividual = ({office}) => {
     return (
-    <div className="list-element-view-container">
+    <div className="list-element-view-grid">
         <ul>
             <li>{office.name}</li>
             <li>{office.address}</li>
@@ -9,5 +9,6 @@ const ViewOfficeIndividual = ({office}) => {
         </ul>
     </div> 
 )}
+    
 
 export default ViewOfficeIndividual
