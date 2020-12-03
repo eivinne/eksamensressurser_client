@@ -1,4 +1,6 @@
 /* TODO add functionality for how Offices are viewed */
+import React from 'react'
+import { ViewOfficesDiv } from '../styles/StyledComponents'
 
 const ViewOfficesComponent = ({ officesList }) => {
     const offices = [...officesList];

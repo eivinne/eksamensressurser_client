@@ -304,8 +304,13 @@ export const ButtonBlue = styled.button`
     }
 `;
 
-export const ViewOfficesDiv = styled.div
+export const ViewOfficesDiv = styled.div`
+    width:100%;
+    backgroundcolor:grey;
     
+
+    
+`;
 
 export const UndetailedPollSectionWrapper = styled.section`
     display: flex;
