@@ -3,7 +3,6 @@ import SignUpFormComponent from '../components/SignUpFormComponent'
 
 const SignUp = (loggedInn) => {
   return (
-    <SignUpFormComponent></SignUpFormComponent>
   );
 };
 

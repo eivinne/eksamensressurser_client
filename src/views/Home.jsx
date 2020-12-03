@@ -4,10 +4,8 @@ import { list } from '../utils/eventService.js';
 
 const Home = () => {
   
-  const [polls, setPolls] = useState([]);
-  const [error, setError] = useState([]);
   
-  useEffect(() =>{
+  /*useEffect(() =>{
     const fetchData = async () => {
       const {data, error } = await list();
       if(error){
@@ -18,12 +16,10 @@ const Home = () => {
       }
     };
     fetchData();
-  }, []);
+  }, []);*/
 
   return (
     <div>
-      {error && <p>{error}</p>}
-      {polls && <UndetailedComponent polls = {polls}></UndetailedComponent>}
     </div>
   );
 };
