@@ -53,15 +53,16 @@ export const FormButton = styled.button`
 
 export const NavBar = styled.nav`
     display: flex;
-    background-color: #000000;
+    background-color: #white;
     opacity: 0.72;
+    
     flex-wrap: wrap;
     box-shadow: 0px 2px 3px black;
 
     ul{
         display: flex;
         list-style: none;
-        color: white;
+        color: black;
         text-decoration: none;
         flex-direction: row-reverse;
         height: 50px;
@@ -78,22 +79,24 @@ export const NavBar = styled.nav`
 
     p{
         float: left;
-        color: white;
+        color: #000;
         margin-left: 10px;
     }
 
     ul>li>a{
         text-decoration: none;
-        color: white;
+        color: #000;
         text-align: center;
     }
     ul>li>.active{
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #469fb9;
+        color:#469fb9;
     }
 
     ul>li>a:hover{
         cursor: pointer;
-        border-bottom: 1px solid white;
+        border-bottom: 1px solid #469fb9;
+        color: #469fb9;
     }
     @media all and (max-width: 700px){
         flex-direction: column;

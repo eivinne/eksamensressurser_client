@@ -12,17 +12,15 @@ const NavBarComponent = () => {
     if (localStorage.getItem('user') === null) {
         return (
             <NavBar>
-                <p>Online polls</p>
+                <p>FG</p>
                 <ul>
+                    <li><NavLink activeClassName="active" to="/Login">Login</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Contact">Kontakt</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/Login">Login</NavLink></li>
                     <li><NavLink activeClassName="active" to="/SignUp">Sign up</NavLink></li>
-                    <li><p>|</p></li>
-                    <li><NavLink activeClassName="active" to="/Home">Home</NavLink></li>
-                </ul>
+                    <li><p>|</p></li></ul>
             </NavBar>
         )
     }
@@ -30,13 +28,12 @@ const NavBarComponent = () => {
     else {
         return (
             <NavBar>
-                <p>Online polls</p>
+                <p>FG</p>
                 <ul>
                     <li><p className="loggOut" onClick={loggOut}>Logg out</p></li>
                     <li><p>{localStorage.getItem('user')}</p></li>
                     <li><p>|</p></li>
-                    <li><NavLink activeClassName="active" to="/DoPoll">Do Poll</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/Create">Create</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Create">Create Article</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Home">Home</NavLink></li>
                 </ul>
             </NavBar>
