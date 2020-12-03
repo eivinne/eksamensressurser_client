@@ -1,21 +1,33 @@
-import React from 'react'
+import React, {Component} from 'react'
 import { ViewOfficesDiv } from '../styles/StyledComponents'
 import ViewOfficeIndividual from './ViewOfficeIndividual'
-import offices from './../data/Offices.json';
+import {city} from "../utils/officesService"
 
-const ViewOfficesComponent = () => {
 
-    return (
-        <ViewOfficesDiv>
-            <section className="main-banner">Kontorer</section>
-            <button>List View</button>
-            <ul>
-                <p>Fredrikstad ({offices.length} Kontorer)</p>
-                {offices.map((office,index)=>{
-                return <ViewOfficeIndividual key={index} office={office}/>
-                })}
-            </ul>
-        </ViewOfficesDiv>
-    )}
+
+class ViewOfficesComponent extends Component {
+    constructor() {
+        super();
+        this.state = { offices: [], city:"fredrikstad" };
+      }
+    
+      async componentDidMount() {
+        this.setState({ offices: (await city(this.state.city)).data });
+      }
+    
+    render(){
+        return (
+            <ViewOfficesDiv>
+                <section className="main-banner">Kontorer</section>
+                <button>List View</button>
+                <ul>
+                    <p>{this.state.city} ({this.state.offices.length} Kontorer)</p>
+                    {this.state.offices.map((office,index)=>{
+                    return <ViewOfficeIndividual key={index} office={office}/>
+                    })}
+                </ul>
+            </ViewOfficesDiv>
+        )
+}   }
 
 export default ViewOfficesComponent

@@ -14,13 +14,4 @@ export const Poll = () => {
     }
 };
 
-export const OfficeCity = () => {
-const [cityName] = useState("");
-const [count] = useState(0);
-return{
-    cityName,
-    count
-}
 
-
-}
