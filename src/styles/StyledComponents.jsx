@@ -354,9 +354,46 @@ export const ButtonBlue = styled.button`
 `;
 
 export const ViewOfficesDiv = styled.div`
-    width:100%;
-    backgroundcolor:grey;
+
+    p { 
+        font-size:3em;
+        font-weight:bold;    
+    }
     
+    .main-banner{
+        width:100%;
+        height:400px;
+        text-align: center;
+        vertical-align: middle;
+        line-height: 400px;
+        background-color:#dbdbdb;
+        font-size:50px;   
+    }
+    .list-element-view-container{
+        display:inline-flex;
+        border-radius:5px;
+        border: 2px solid black;
+        padding:1em;
+        margin:2em;
+
+    }
+    .list-element-view-container{
+        display:block;
+        border-radius:5px;
+        border: 2px solid black;
+        padding:1em;
+        margin:2em;
+
+    }
+    @media all and (max-width: 500px){
+        font-size:1em;
+        padding:40px;
+    }
+    @media all and (max-width: 800px){
+        font-size:1em;
+    }
+
+
 
     
 `;

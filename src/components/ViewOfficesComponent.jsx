@@ -1,25 +1,57 @@
 /* TODO add functionality for how Offices are viewed */
+import { render } from '@testing-library/react';
 import React from 'react'
 import { ViewOfficesDiv } from '../styles/StyledComponents'
 
-const ViewOfficesComponent = ({ officesList }) => {
-    const offices = [...officesList];
+const ViewOfficesComponent = () => {
+
+    
+
     return (
         
         <ViewOfficesDiv>
-            <div>Offices</div>
+            <section className="main-banner">Kontorer</section>
+            <button>List View</button>
             <ul>
-                {offices.map((item) => {
-                    const city = [...item.city];
-                    return <ul key={city}><p>{item.city}</p>
-                    <li key={item.id}>{item.number}  
-                    </li></ul>
-                })}
+                <p>Fredrikstad (8 Kontorer)</p>
+                    <div className="list-element-view-container">
+                        <ul>
+                            <li>Rørlegger: $Nummer </li>
+                            <li>Rørlegger veien $nummer</li>
+                            <li> Tlf: 98842566 </li>
+                            <li> $Lokasjon $nummer@epost.no</li>
+                        </ul>
+                    </div> 
+                    <div className="list-element-view-container">
+                        <ul>
+                            <li>Rørlegger: $Nummer </li>
+                            <li>Rørlegger veien $nummer</li>
+                            <li> Tlf: 98842566 </li>
+                            <li> $Lokasjon $nummer@epost.no</li>
+                        </ul>
+                    </div> 
+                    <div className="list-element-view-container">
+                        <ul>
+                            <li>Rørlegger: $Nummer </li>
+                            <li>Rørlegger veien $nummer</li>
+                            <li> Tlf: 98842566 </li>
+                            <li> $Lokasjon $nummer@epost.no</li>
+                        </ul>
+                    </div> 
+                    <div className="list-element-view-container">
+                    <ul>
+                        <li>Rørlegger: $Nummer </li>
+                        <li>Rørlegger veien $nummer</li>
+                        <li> Tlf: 98842566 </li>
+                        <li> $Lokasjon $nummer@epost.no</li>
+                    </ul>
+                </div>
+                    
             </ul>
+         
         </ViewOfficesDiv>
-            
+    );}
+    
 
-    )
-}
 
 export default ViewOfficesComponent
