@@ -1,5 +1,54 @@
 import styled from 'styled-components';
 
+export const HomeHeader = styled.header`
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dbdbdb;
+    width: 100%;
+    height: 300px;
+`;
+
+export const HomeSection = styled.section`
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 2;
+    grid-template-areas: 
+    "leftsection rightsection rightsection rightsection"
+    "lowersection lowersection lowersection lowersection";
+    margin: 3em 5% 0 5%;
+
+    section {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #dbdbdb;
+        background-color: #dbdbdb;   
+    }
+
+    .gridBox1 {
+        grid-area: leftsection;
+        height: 300px;
+        margin-right: 3em;
+
+    }
+
+    .gridBox2 {
+        grid-area: rightsection;
+        height: 300px;
+    }
+
+    .gridBox3 {
+        grid-area: lowersection;
+        height: 300px;
+        margin-top: 3em;
+    }
+    
+`;
+
+
+
+
 export const FormStyle = styled.form`
     display: flex;
     flex-direction: column;

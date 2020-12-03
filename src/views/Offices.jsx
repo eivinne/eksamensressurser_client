@@ -3,7 +3,8 @@ import ViewOfficesComponent from '../components/ViewOfficesComponent'
 
 const Offices = props => {
   return (
-    <ViewOfficesComponent></ViewOfficesComponent>
+    //<ViewOfficesComponent></ViewOfficesComponent>
+    <div></div>
   );
 };
 
