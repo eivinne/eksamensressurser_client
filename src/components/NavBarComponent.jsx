@@ -33,7 +33,7 @@ const NavBarComponent = () => {
                     <li><p className="loggOut" onClick={loggOut}>Logg out</p></li>
                     <li><p>{localStorage.getItem('user')}</p></li>
                     <li><p>|</p></li>
-                    <li><NavLink activeClassName="active" to="/Create">Create Article</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/CreateArticle">Create Article</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Home">Home</NavLink></li>
                 </ul>
             </NavBar>
