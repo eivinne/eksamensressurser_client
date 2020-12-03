@@ -359,6 +359,11 @@ export const ViewOfficesDiv = styled.div`
         font-size:3em;
         font-weight:bold;    
     }
+
+    li{
+        list-style:none;
+        line-height:1.5em;
+    }
     
     .main-banner{
         width:100%;
@@ -375,10 +380,11 @@ export const ViewOfficesDiv = styled.div`
         border: 2px solid black;
         padding:1em;
         margin:2em;
+        
 
     }
     .list-element-view-container{
-        display:block;
+        
         border-radius:5px;
         border: 2px solid black;
         padding:1em;

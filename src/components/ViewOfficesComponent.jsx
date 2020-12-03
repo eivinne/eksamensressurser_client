@@ -2,6 +2,8 @@
 import { render } from '@testing-library/react';
 import React from 'react'
 import { ViewOfficesDiv } from '../styles/StyledComponents'
+import ViewOfficeIndividual from './ViewOfficeIndividual'
+import offices from './../data/Offices.json';
 
 const ViewOfficesComponent = () => {
 
@@ -14,43 +16,17 @@ const ViewOfficesComponent = () => {
             <button>List View</button>
             <ul>
                 <p>Fredrikstad (8 Kontorer)</p>
-                    <div className="list-element-view-container">
-                        <ul>
-                            <li>Rørlegger: $Nummer </li>
-                            <li>Rørlegger veien $nummer</li>
-                            <li> Tlf: 98842566 </li>
-                            <li> $Lokasjon $nummer@epost.no</li>
-                        </ul>
-                    </div> 
-                    <div className="list-element-view-container">
-                        <ul>
-                            <li>Rørlegger: $Nummer </li>
-                            <li>Rørlegger veien $nummer</li>
-                            <li> Tlf: 98842566 </li>
-                            <li> $Lokasjon $nummer@epost.no</li>
-                        </ul>
-                    </div> 
-                    <div className="list-element-view-container">
-                        <ul>
-                            <li>Rørlegger: $Nummer </li>
-                            <li>Rørlegger veien $nummer</li>
-                            <li> Tlf: 98842566 </li>
-                            <li> $Lokasjon $nummer@epost.no</li>
-                        </ul>
-                    </div> 
-                    <div className="list-element-view-container">
-                    <ul>
-                        <li>Rørlegger: $Nummer </li>
-                        <li>Rørlegger veien $nummer</li>
-                        <li> Tlf: 98842566 </li>
-                        <li> $Lokasjon $nummer@epost.no</li>
-                    </ul>
-                </div>
+                {offices.map((office,index)=>{
+                    return <ViewOfficeIndividual key={index} office={office}/>
+
+                })}
+                    
+                   
                     
             </ul>
          
         </ViewOfficesDiv>
-    );}
+    )}
     
 
 
