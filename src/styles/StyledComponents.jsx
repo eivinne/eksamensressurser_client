@@ -304,6 +304,9 @@ export const ButtonBlue = styled.button`
     }
 `;
 
+export const ViewOfficesDiv = styled.div
+    
+
 export const UndetailedPollSectionWrapper = styled.section`
     display: flex;
     flex-wrap: wrap;
