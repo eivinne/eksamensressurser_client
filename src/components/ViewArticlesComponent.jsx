@@ -1,1 +1,15 @@
-/* TODO add functionality for how articles are viewed */
+import React, { useState } from 'react';
+import { HomeHeader } from '../styles/StyledComponents';
+
+const ViewArticlesComponent = () => {
+
+    return (
+        <>
+        <HomeHeader>Fagartikler</HomeHeader>
+
+        </>
+
+    )
+};
+
+export default ViewArticlesComponent;

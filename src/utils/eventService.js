@@ -1,64 +1,54 @@
 import http from './http.js';
-const API_POLL_URL = "/polls";
-const API_POLL_CREATE_URL = "/polls/create";
-const API_POLL_UPDATE_URL = "/polls/update";
-const API_POLL_DELETE_URL = "/polls/delete";
-const API_USER_CREATE_URL = "/users/create";
+const API_ARTICLE_URL = "/articles";
+const API_ARTICLE_CREATE_URL = "/articles/create";
+const API_ARTICLE_UPDATE_URL = "/articles/update";
+const API_ARTICLE_DELETE_URL = "/articles/delete";
 const API_USER_LOGIN_URL = "/users/login";
 
-export const list = async () => {
+export const getAllArticles = async () => {
     try{
-        return await http.get(`${API_POLL_URL}`);
+        return await http.get(`${API_ARTICLE_URL}`);
     }
     catch(err){
         return err.response.data;
     }
 };
 
-export const get = async (id) => {
+export const getArticle = async (id) => {
     try{
-        return await http.get(`${API_POLL_URL}/${id}`);
+        return await http.get(`${API_ARTICLE_URL}/${id}`);
     }
     catch(err){
         return err.response.data;
     }
 };
 
-export const create = async (data) => {
+export const createArticle = async (data) => {
     try{
-        return await http.post(`${API_POLL_CREATE_URL}`, data);
+        return await http.post(`${API_ARTICLE_CREATE_URL}`, data);
     }
     catch(err){
         return err.response.data;
     }
 };
 
-export const update = async (data, id) => {
+export const updateArticle = async (data, id) => {
     try{
-        return await http.put(`${API_POLL_UPDATE_URL}/${id}`, data);
+        return await http.put(`${API_ARTICLE_UPDATE_URL}/${id}`, data);
     }
     catch(err){
         return err.response.data;
     }
 };
 
-export const remove = async (data, id) => {
+export const removeArticle = async (data, id) => {
     try{
-        return await http.remove(`${API_POLL_DELETE_URL}/${id}`);
+        return await http.remove(`${API_ARTICLE_DELETE_URL}/${id}`);
     }
     catch(err){
         return err.response.data;
     }
 };
-
-export const register = async (data) =>{
-    try{
-        return await http.post(`${API_USER_CREATE_URL}`,data)
-    }
-    catch(err){
-        return err.response.data;
-    }
-}
 
 export const login = async (data) => {
     try{
@@ -70,10 +60,10 @@ export const login = async (data) => {
 }
 
 export default {
-    list,
-    get,
-    create,
-    update,
-    remove,
+    getAllArticles,
+    getArticle,
+    createArticle,
+    updateArticle,
+    removeArticle,
     login,
 };
