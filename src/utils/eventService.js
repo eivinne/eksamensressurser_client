@@ -69,6 +69,24 @@ export const getOffice = async (id) => {
     }
 };
 
+export const list = async () => {
+    try{
+        return await http.get(`${API_OFFICE_URL}`);
+    }
+    catch(err){
+        return err.response.data;
+    }
+};
+
+export const city = async (city) => {
+    try{
+        return await http.get(`${API_OFFICE_URL}/${city}`);
+    }
+    catch(err){
+        return err.response.data;
+    }
+};
+
 export const login = async (data) => {
     try{
         return await http.post(`${API_USER_LOGIN_URL}`, data);
@@ -84,5 +102,9 @@ export default {
     createArticle,
     updateArticle,
     removeArticle,
+    getOffice,
+    getAllOffices,
+    list,
+    city,
     login,
 };

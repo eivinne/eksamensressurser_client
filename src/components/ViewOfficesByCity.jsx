@@ -1,12 +1,18 @@
 import React, {Component} from "react";
 import ViewOfficeIndividual from "./ViewOfficeIndividual"
-class ViewOfficesByCity extends Component {
 
+class ViewOfficesByCity extends Component {
     constructor(props) {
         super(props);
-        //this.state = { offices: this.props.offices, city: this.props.city};
+        this.state = { viewType: 'list-element-view-list'};
       }
+
+      handleViewChange = (event, value) => {
+        this.setState({ viewType: value });
+    };
+   
     render() {
+
     return (
         <>
         <p>{this.props.city} ({this.props.offices.length} Kontorer)</p>
