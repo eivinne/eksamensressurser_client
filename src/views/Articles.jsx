@@ -15,7 +15,7 @@ const Articles = props => {
       }
       else {
         setListOfArticles(data);
-      }
+      } 
     };
     getArticles();
   }, []);

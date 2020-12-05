@@ -19,6 +19,7 @@ const LoginForm = () => {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [user, setUser] = useState({});
+    const [role, setRole] = useState("");
 
     const handleEmailInpt = (e) => {
         let inptEmail = e.target.value;
@@ -32,17 +33,35 @@ const LoginForm = () => {
 
     const handleLogin = async (e) => {
         e.preventDefault();
+        if(role === "Admin"){
+            const response = await login(
+                {
+                    email: email,
+                    password: password,
+                    isAdmin: true
+                });
+                console.log(response.data.email)
+        localStorage.clear();
+        localStorage.setItem('user', response.data.email);
+        window.location="/adminHome";
+
+        }else{
+
+        
         const response = await login(
             {
                 email: email,
-                password: password
+                password: password,
+                isAdmin: false
             });
 
         console.log(response.data.email)
         localStorage.clear();
         localStorage.setItem('user', response.data.email);
         window.location="/Home";
+        }
     };
+
 
     return (
         <FormStyle>

@@ -15,6 +15,7 @@ class ViewOfficesByCity extends Component {
 
     return (
         <>
+
         <p>{this.props.city} ({this.props.offices.length} Kontorer)</p>
         {this.props.offices.map((office,index)=>{
          return <ViewOfficeIndividual key={index} office={office}/>

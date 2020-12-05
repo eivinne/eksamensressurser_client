@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import { ViewOfficesDiv } from '../styles/StyledComponents'
 import ViewOfficesByCity from './ViewOfficesByCity'
-import {list} from "../utils/eventService"
+import {city, list} from "../utils/eventService"
 
 
 class ViewOfficesComponent extends Component {
@@ -10,8 +10,9 @@ class ViewOfficesComponent extends Component {
         this.state = { offices: [], cities: []};
       }
 
-      
     
+      
+      
       async componentDidMount() {
        await this.setState({ offices: (await list()).data });
        await this.setState({ cities: this.state.offices.reduce((cities,{city})=>{
@@ -23,12 +24,21 @@ class ViewOfficesComponent extends Component {
        },[])});
        console.log(this.state.cities)
       }
+
+
     
     render(){
         
         return (
             <ViewOfficesDiv>
                 <section className="main-banner">Kontorer</section>
+                <select className="FilterBox"value={this.offices}>
+                    {this.state.cities.map((city)=>{
+                        return <option key={city}value={this.state.offices.filter((c)=>{
+                        return c.city === city;
+            })}>{city}</option>
+          })}
+        </select>
                 <ul>    
                     {this.state.cities.map((city)=>{
                         return <ViewOfficesByCity key={city} offices={this.state.offices.filter((c)=>{
