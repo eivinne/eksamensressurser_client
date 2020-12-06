@@ -84,5 +84,7 @@ export default {
     createArticle,
     updateArticle,
     removeArticle,
+    getAllOffices,
+    getOffice,
     login,
 };
