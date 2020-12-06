@@ -399,6 +399,13 @@ export const ViewOfficesDiv = styled.div`
         margin:2em;
 
     }
+    .FilterBox{
+        font-size:20px;
+        float:right;
+        padding:20px;
+        background-color:#dbdbdb
+        margin-top:5px;
+    }
     @media all and (max-width: 500px){
         font-size:1em;
         padding:40px;
