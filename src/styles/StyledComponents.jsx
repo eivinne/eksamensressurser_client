@@ -46,7 +46,43 @@ export const HomeSection = styled.section`
     
 `;
 
+export const ArticleListWrapper = styled.article `
+    display: flex;
+    flex-direction: column;
+`;
 
+export const ArticleListElement = styled.li `
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-areas: 
+    "leftsection middlesection rightsection"
+    "leftsection lowersection lowersection";
+    margin: 20px 20% 20px 20%;
+    list-style: none;
+
+    div{
+        grid-area: leftsection;
+        background-color: #dbdbdb;
+        height: 300px:
+        width: 300px;
+    }
+
+    h2{
+        grid-area: middlesection;
+    }
+
+    h4{
+        grid-area: rightsection;
+    }
+
+    p{
+        grid-area: lowersection;
+    }
+`;
+
+export const ArticleWrapper = styled.article`
+    margin: 0 20% 0 20%;
+
+`;
 
 
 export const FormStyle = styled.form`

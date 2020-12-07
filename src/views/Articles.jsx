@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from 'react';
+import ViewArticleDetailComponent from '../components/ViewArticleDetailComponent';
 import ViewArticlesComponent from '../components/ViewArticlesComponent'
 import { getAllArticles } from '../utils/eventService';
 
 const Articles = props => {
 
-  const [listOfArticles, setListOfArticles] = useState([]);
+  const [articles, setArticles] = useState(null);
   const [error, setError] = useState(null);
+  const [showArticle, setShowArticle] = useState(false);
 
   useEffect(() =>{
     const getArticles = async () => {
@@ -14,15 +16,16 @@ const Articles = props => {
         setError(error);
       }
       else {
-        setListOfArticles(data);
+        setArticles(data);
       } 
     };
     getArticles();
   }, []);
-
-
+        
   return (
-    <ViewArticlesComponent></ViewArticlesComponent>
+    <>
+    {articles && <ViewArticlesComponent articleList={articles} showArticle={showArticle}></ViewArticlesComponent>}
+    </>
   );
 
 };
