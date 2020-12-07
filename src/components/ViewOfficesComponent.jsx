@@ -32,7 +32,7 @@ class ViewOfficesComponent extends Component {
         return (
             <ViewOfficesDiv>
                 <section className="main-banner">Kontorer</section>
-                <select className="FilterBox"value={this.offices}>
+                <select className="FilterBox"value={this.offices} onChange={this.componentDidMount}>
                     {this.state.cities.map((city)=>{
                         return <option key={city}value={this.state.offices.filter((c)=>{
                         return c.city === city;

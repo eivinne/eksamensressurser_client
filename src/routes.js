@@ -6,9 +6,24 @@ import Offices from "./views/Offices";
 import Articles from "./views/Articles";
 import Contact from "./views/Contact";
 import NavBarComponent from "./components/NavBarComponent";
+import ProtectedRoute from "./components/ProtectedRoute";
+import LoginFormComponent from "./components/LoginFormComponent"
 import { Route, Switch, Redirect } from "react-router-dom";
-
+import Unauthorized from "./components/Unauthorized";
+import withAuth from './components/withAuthentication';
 export const Routes = () => {
+
+  const [user, setUser] = useState(false)
+
+const handleLogin = e => {
+  e.preventDefault();
+  setUser(true);
+}
+
+const handleLogout = e => {
+  e.preventDefault();
+  setUser(false);
+}
   return (
     <div>
       <NavBarComponent/>
@@ -17,6 +32,9 @@ export const Routes = () => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
+        <ProtectedRoute exact path='/Logout' user={user} handleLogout={handleLogout} component={Home} />
+
+        <Route exact path='/unauthorized' component={Unauthorized} />
         <Route exact path="/Offices" component={Offices} />
         <Route exact path="/Articles" component={Articles} />
         <Route exact path="/Contact" component={Contact} />

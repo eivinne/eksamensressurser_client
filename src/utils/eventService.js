@@ -5,6 +5,9 @@ const API_ARTICLE_UPDATE_URL = "/articles/update";
 const API_ARTICLE_DELETE_URL = "/articles/delete";
 const API_OFFICE_URL = "/offices";
 const API_USER_LOGIN_URL = "/users/login";
+const API_USER_AUTHENTICATE_URL = "/users/authenticate";
+const API_USER_CHECK_TOKEN_URL = "/users/checkToken";
+
 
 export const getAllArticles = async () => {
     try{
@@ -89,12 +92,28 @@ export const city = async (city) => {
 
 export const login = async (data) => {
     try{
-        return await http.post(`${API_USER_LOGIN_URL}`, data);
+        const test = await http.post(`${API_USER_AUTHENTICATE_URL}`, data);
+        console.log("test");
+        return test
     }
     catch(err){
-        return err.respone.data
+        return err.respone
     }
 }
+
+export const checkToken = async (data) => {
+    try{
+        const test2 =  await http.post(`${API_USER_CHECK_TOKEN_URL}`, data);
+        console.log(test2);
+        return test2;
+    }
+    catch(err){
+        return err.respone
+    }
+}
+
+
+
 
 export default {
     getAllArticles,
@@ -102,6 +121,7 @@ export default {
     createArticle,
     updateArticle,
     removeArticle,
+    checkToken,
     getOffice,
     getAllOffices,
     list,

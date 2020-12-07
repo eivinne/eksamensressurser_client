@@ -24,6 +24,23 @@ const NavBarComponent = () => {
             </NavBar>
         )
     }
+    if(localStorage.getItem('user').isAdmin === true){
+        return (
+            <NavBar>
+                <p>FG</p>
+                <ul>
+                    <li><p className="loggOut" onClick={loggOut}>Logg out</p></li>
+                    <li><p>{localStorage.getItem('user')}</p></li>
+                    <li><p>|</p></li>
+                    <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Contact">Kontakt</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/CreateArticle">Create Article</NavLink></li>
+                </ul>
+            </NavBar>
+        )
+    }
     
     else {
         return (
