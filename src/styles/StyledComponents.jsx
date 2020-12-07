@@ -53,13 +53,13 @@ export const FormStyle = styled.form`
     display: flex;
     flex-direction: column;
     text-align: center;
-    color: white;
-    border-radius: 10px;
+    color: #474747;
+    border-radius: 2px;
     width: 350px;
     margin: 0 auto;
     height: 500px;
     margin-top: 100px;
-    background-color: #3d3d3d;
+    background-color: #f2f2f2;
     box-shadow: 5px 5px 5px grey;
 
     &>*{
@@ -86,15 +86,17 @@ export const FormStyle = styled.form`
 export const FormButton = styled.button`
     margin-top: auto;
     margin-bottom: 40px;
-    border-radius: 5px;
-    background-color:  #419639;
-    height: 35px;
+    padding: 20px 20px 20px 20px;
+    border-radius:0px;
+    background-color:  #8fd6d6;
+    font-size:20px;
+    line-height:1px;
     border: 0px solid transparent;
     color: white;
     box-shadow: 0.5px 0.5px 2px black;
 
     :hover{
-        background-color: darkgray;
+        background-color: #63e8ff;
         color: white;
         cursor: pointer;
     }
@@ -404,7 +406,7 @@ export const ViewOfficesDiv = styled.div`
         float:right;
         padding:20px;
         background-color:#dbdbdb
-        margin-top:5px;
+        
     }
     @media all and (max-width: 500px){
         font-size:1em;

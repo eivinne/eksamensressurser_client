@@ -1,12 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { FormStyle } from '../styles/StyledComponents';
-import { FormButton } from '../styles/StyledComponents';
-import { login } from '../utils/eventService';
-import axios from 'axios';
+import axios from "axios";
+import React, { Component,browserHistory } from "react";
+import { FormStyle,FormButton } from '../styles/StyledComponents';
+import {login} from '.././utils/eventService'
 
 //Loginmetodikken er hentet fra https://www.freecodecamp.org/news/how-to-persist-a-logged-in-user-in-react/
 
-const LoginForm = () => {
+export default class Login extends Component {
 
     /*useEffect(() => {
         const loggedInUser = localStorage.getItem("user");
@@ -15,65 +14,52 @@ const LoginForm = () => {
           setUser(foundUser);
         }
       }, []);*/
+      constructor(props){
+          super(props)
+          this.state = {
+              email:'',
+              password:'',
+          }
+      }
 
-    const [email, setEmail] = useState("");
-    const [password, setPassword] = useState("");
-    const [user, setUser] = useState({});
-    const [role, setRole] = useState("");
+      handleInputChange = (event) => {
+          const {value, name} = event.target;
+          this.setState({
+              [name]: value
+          });
+      }
 
-    const handleEmailInpt = (e) => {
-        let inptEmail = e.target.value;
-        setEmail(inptEmail);
-    };
+      onSubmit = async (event) => {
+        event.preventDefault();
+       const login_result = await login({email:this.state.email, password: this.state.password});
+       if(login_result.status === 200){
+        window.location = "/Home";
+       }else{
+           const error = new Error(login_result.error);
+           throw error;
+           
+       }
+      
+      }
+    
 
-    const handlePasswordInpt = (e) => {
-        let inptPassword = e.target.value;
-        setPassword(inptPassword);
-    };
+    
 
-    const handleLogin = async (e) => {
-        e.preventDefault();
-        if(role === "Admin"){
-            const response = await login(
-                {
-                    email: email,
-                    password: password,
-                    isAdmin: true
-                });
-                console.log(response.data.email)
-        localStorage.clear();
-        localStorage.setItem('user', response.data.email);
-        window.location="/adminHome";
-
-        }else{
+      render() {
+    return (
+           <FormStyle onSubmit={this.onSubmit} >
+            <p>Login</p>
+            <p>E-Post</p>
+            <input type="text" name="email" placeholder="Skriv inn E-post" value={this.state.email} autoComplete="email" onChange={this.handleInputChange} required />
+            <p>Passord</p>
+            <input type="password" name="password" placeholder="Skriv Inn Passord" value={this.state.password} autoComplete="current-password" onChange={this.handleInputChange} required />
+           
+            <input type="submit" value="Submit"/>
+            
+            </FormStyle>
 
         
-        const response = await login(
-            {
-                email: email,
-                password: password,
-                isAdmin: false
-            });
-
-        console.log(response.data.email)
-        localStorage.clear();
-        localStorage.setItem('user', response.data.email);
-        window.location="/Home";
-        }
-    };
-
-
-    return (
-        <FormStyle>
-            <p>Login</p>
-            <p>Email</p>
-            <input type="text" placeholder="Email" autoComplete="email" onChange={handleEmailInpt}></input>
-            <p>Password</p>
-            <input type="password" placeholder="Password" autoComplete="current-password" onChange={handlePasswordInpt}></input>
-            <FormButton onClick={handleLogin}>Login</FormButton>
-        </FormStyle>
-    );
+        )
+}
 };
 
-
-export default LoginForm;
