@@ -35,7 +35,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
         {!showArticleDetail && <HomeHeader>Fagartikler</HomeHeader>}
         <button onClick={newArticle}>Ny artikkel</button>
         {!showArticleDetail && <ArticleListWrapper>
-            {allArticles.map( (article) => {
+            {false && allArticles.map( (article) => {
                 return(
                     <ArticleListElement onClick={() => showArticleView(article._id)} >
                         <div>bilde</div>

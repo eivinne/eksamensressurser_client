@@ -9,9 +9,9 @@ const API_USER_AUTHENTICATE_URL = "/users/authenticate";
 const API_USER_CHECK_TOKEN_URL = "/users/checkToken";
 
 
-export const getAllArticles = async () => {
+export const getAllArticles = async (data) => {
     try{
-        return await http.get(`${API_ARTICLE_URL}`);
+        return await http.get(`${API_ARTICLE_URL}`,data);
     }
     catch(err){
         return err.response.data;
