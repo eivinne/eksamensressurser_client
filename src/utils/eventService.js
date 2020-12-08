@@ -4,7 +4,9 @@ const API_ARTICLE_CREATE_URL = "/articles/create";
 const API_ARTICLE_UPDATE_URL = "/articles/update";
 const API_ARTICLE_DELETE_URL = "/articles/delete";
 const API_OFFICE_URL = "/offices";
-const API_USER_LOGIN_URL = "/users/login";
+const API_USER_REGISTER_URL = "/users/create";
+const API_USER_UPDATE_URL = "/users/update";
+const API_USER_DELETE_URL = "/users/delete";
 const API_USER_AUTHENTICATE_URL = "/users/authenticate";
 const API_USER_CHECK_TOKEN_URL = "/users/checkToken";
 
@@ -103,6 +105,34 @@ export const checkToken = async (data) => {
     }
 }
 
+export const registerUser = async (data) => {
+    try{
+        return await http.post(`${API_USER_REGISTER_URL}`, data);
+    }
+    catch(err){
+        return err.response.data;
+    }
+};
+
+export const deleteUser = async (data, id) => {
+    try{
+        return await http.remove(`${API_USER_DELETE_URL}/${id}`);
+    }
+    catch(err){
+        return err.response.data;
+    }
+};
+
+export const updateUser = async (data, id) => {
+    try{
+        return await http.put(`${API_USER_UPDATE_URL}/${id}`, data);
+    }
+    catch(err){
+        return err.response.data;
+    }
+};
+
+
 
 
 
@@ -117,4 +147,7 @@ export default {
     getAllOffices,
     city,
     login,
+    registerUser,
+    updateUser,
+    deleteUser,
 };

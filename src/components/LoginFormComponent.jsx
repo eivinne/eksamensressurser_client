@@ -7,13 +7,6 @@ import {login} from '.././utils/eventService'
 
 export default class Login extends Component {
 
-    /*useEffect(() => {
-        const loggedInUser = localStorage.getItem("user");
-        if (loggedInUser) {
-          const foundUser = JSON.parse(loggedInUser);
-          setUser(foundUser);
-        }
-      }, []);*/
       constructor(props){
           super(props)
           this.state = {
@@ -43,9 +36,6 @@ export default class Login extends Component {
        }
       
       }
-    
-
-    
 
       render() {
     return (
