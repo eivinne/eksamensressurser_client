@@ -34,10 +34,12 @@ export default class Login extends Component {
        const login_result = await login({email:this.state.email, password: this.state.password});
        if(login_result.status === 200){
         window.location = "/Home";
-       }else{
-           const error = new Error(login_result.error);
-           throw error;
+       }else if(login_result.status === 401){
+           alert("Feil Passord!");
            
+       }else {
+        const error = new Error(login_result.error);
+        throw error;
        }
       
       }
