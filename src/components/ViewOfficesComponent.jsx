@@ -1,11 +1,113 @@
-import React, {Component} from 'react'
+import React, {Component, useState, useEffect} from 'react'
 import { ViewOfficesDiv } from '../styles/StyledComponents'
 import ViewOfficesByCity from './ViewOfficesByCity'
-import {city, list} from "../utils/eventService"
+import {city, getAllOffices} from "../utils/eventService"
 import Offices from '../views/Offices';
+import listOfOffices from '../data/offices.json';
 
 
-class ViewOfficesComponent extends Component {
+
+
+
+
+const ViewOfficesComponent = () => {
+
+    const [allOffices, setAllOffices] = useState(listOfOffices);
+    const [osloOffices, setOsloOffices] = useState([]);
+    const [fredrikstadOffices, setFredrikstadOffices] = useState([]);
+    const [haldenOffices, setHaldenOffices] = useState([]);
+    const [sarpsborgOffices, setSarpsborgOffices] = useState([]);
+
+    const sortOfficesByCity = () => {
+        allOffices.map((office) => {
+            if(office.city == "Oslo") {
+                osloOffices.push(office);
+            }
+            if(office.city == "Fredrikstad") {
+                fredrikstadOffices.push(office);
+            }
+            if(office.city == "Halden") {
+                haldenOffices.push(office);
+            }
+            if(office.city == "Sarpsborg") {
+                sarpsborgOffices.push(office);
+            }
+        })
+    }
+
+    useEffect(() =>{
+        sortOfficesByCity();
+      }, []);
+
+    return(
+        <>
+        <div>
+        <h2>Fredrikstad</h2>
+        <ul>
+        {fredrikstadOffices.map((office) => {
+            return(
+                <li>
+                    <p>{office.name}</p>
+                    <p>{office.adress}</p>
+                    <p>{office.phone}</p>
+                    <p>{office.city}</p>
+                    <p>{office.location}</p>
+                </li>
+            )
+        })}
+        </ul>
+        <h2>Oslo</h2>
+        <ul>
+        {osloOffices.map((office) => {
+            return(
+                <li>
+                    <p>{office.name}</p>
+                    <p>{office.adress}</p>
+                    <p>{office.phone}</p>
+                    <p>{office.city}</p>
+                    <p>{office.location}</p>
+                </li>
+            )
+        })}
+        </ul>
+        <h2>Halden</h2>
+        <ul>
+        {haldenOffices.map((office) => {
+            return(
+                <li>
+                    <p>{office.name}</p>
+                    <p>{office.adress}</p>
+                    <p>{office.phone}</p>
+                    <p>{office.city}</p>
+                    <p>{office.location}</p>
+                </li>
+            )
+        })}
+        </ul>
+        <h2>Sarpsborg</h2>
+        <ul>
+        {sarpsborgOffices.map((office) => {
+            return(
+                <li>
+                    <p>{office.name}</p>
+                    <p>{office.adress}</p>
+                    <p>{office.phone}</p>
+                    <p>{office.city}</p>
+                    <p>{office.location}</p>
+                </li>
+            )
+        })}
+        </ul>
+        </div>
+        </>
+    );
+
+};
+
+export default ViewOfficesComponent;
+
+
+/*class ViewOfficesComponent extends Component {
     constructor() {
         super();
         this.state = {
@@ -19,7 +121,7 @@ class ViewOfficesComponent extends Component {
       
       
     async componentDidMount() {
-       await this.setState({ offices: (await list()).data });
+       await this.setState({ offices: (await getAllOffices()).data });
        
        await this.setState({ cities: this.state.offices.reduce((cities,{city})=>{
             if(!cities.includes(city)){
@@ -61,4 +163,4 @@ class ViewOfficesComponent extends Component {
         )
 }   }
 
-export default ViewOfficesComponent
+export default ViewOfficesComponent*/

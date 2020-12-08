@@ -72,15 +72,6 @@ export const getOffice = async (id) => {
     }
 };
 
-export const list = async () => {
-    try{
-        return await http.get(`${API_OFFICE_URL}`);
-    }
-    catch(err){
-        return err.response.data;
-    }
-};
-
 export const city = async (city) => {
     try{
         return await http.get(`${API_OFFICE_URL}/${city}`);
@@ -124,7 +115,6 @@ export default {
     checkToken,
     getOffice,
     getAllOffices,
-    list,
     city,
     login,
 };
