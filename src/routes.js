@@ -33,7 +33,7 @@ const handleLogout = e => {
         <Route exact path="/">
           <Redirect to="/Home" />
         </Route>
-        <ProtectedRoute exact path='/Logout' user={checkToken} handleLogout={handleLogout} component={Home} />
+        
 
         <Route exact path='/unauthorized' component={Unauthorized} />
         <Route exact path="/Offices" component={Offices} />
