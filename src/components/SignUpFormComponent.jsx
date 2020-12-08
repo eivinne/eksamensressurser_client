@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FormStyle,FormButton } from '../styles/StyledComponents';
+import {registerUser} from '.././utils/eventService'
 
 const ViewContactComponent = () => {
     const [email, setEmail] = useState("");
@@ -33,47 +34,20 @@ const ViewContactComponent = () => {
         setPassword(inputConfirmedPassword);
     };
 
-   /* const postUserToApi = () => {
-        const sendData = async () => {
-            const { data, error } = await register({
-                email: email,
-                password: password,
-            });
-            if (error) {
-                setMessage("email allready registered");
-            }
-            else {
-                setMessage("User " + email + " created");
-                console.log(data.email);
-                localStorage.clear();
-                localStorage.setItem('user', data.email);
-                localStorage.setItem('id', data._id);
-                window.location = "/Home";
-            }
-        };
-        sendData();
-    }
-
-    //needs to write to db
-    const registerUser = (e) => {
-        e.preventDefault();
-        if (email !== "" && password !== "" && confirmedPassword !== "") {
-            if (!email.includes("@") && !email.includes(".")) {
-                setMessage("Real email needed")
-            }
-            else if (password !== confirmedPassword) {
-                setMessage("Passwords must match")
-            }
-            //check if user already exist first!!!
-            else { //
-                setUser({
-                    email: email,
-                    password: password,
-                })
-                postUserToApi()
-            }
-        }<FormButton onClick={registerUser}>SignUp</FormButton>
-    };*/
+    const registerSubmit = async (event) => {
+        event.preventDefault();
+       const register_data = await registerUser({ firstname: this.state.firstname, lastname: this.state.lastname, email:this.state.email, password: this.state.password});
+       if(register_data.status === 200){
+        window.location = "/Home";
+       }else if(register_data.status === 401){
+           alert("Feil Passord!");
+           
+       }else {
+        const error = new Error(register_data.error);
+        throw error;
+       }
+      
+      }
 
     return (
 
