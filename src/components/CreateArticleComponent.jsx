@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FormStyle } from '../styles/StyledComponents';
+import { FormButton, FormStyle } from '../styles/StyledComponents';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import { createArticle } from '../utils/eventService';
 
@@ -32,14 +32,22 @@ const CreateArticleComponent = ({  }) => {
 
     const handleForfatterSelect = (e) => {
         let forfatter = e.target.value;
+        console.log(forfatter)
         setForfatter(forfatter);
     };
     const handleKategoriSelect = (e) => {
         let kategori = e.target.value;
+        console.log(kategori)
         setKategori(kategori);
     };
 
+    const handleDate = () => {
+        const newDate = new Date().toLocaleDateString();
+        setDato(newDate)
+    }
+
     const postArticleToApi = () => {
+        handleDate();
         const sendData = async () => {
             const { data, error } = await createArticle({
                 tittel: tittel,
@@ -51,13 +59,15 @@ const CreateArticleComponent = ({  }) => {
             });
             if (error) {
                 setMessage("Artikkel kunne ikke opprettes");
+                console.log(error)
             }
             else {
                 setMessage("Artikkel " + tittel + " created");
+                console.log(data)
             }
         }
+        sendData();
     };
-
 
     return (
         <>
@@ -83,6 +93,7 @@ const CreateArticleComponent = ({  }) => {
                 <option>Hytte</option>
             </select>
             <input type="submit" value="Submit"/>
+            <FormButton onClick={postArticleToApi}></FormButton>
         </FormStyle>
         </>
 
