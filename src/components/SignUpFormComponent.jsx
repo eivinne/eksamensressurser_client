@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FormStyle,FormButton } from '../styles/StyledComponents';
-import {registerUser} from '.././utils/eventService'
+import {registerUser,login} from '.././utils/eventService'
 
 const ViewContactComponent = () => {
     const [email, setEmail] = useState("");
@@ -8,7 +8,7 @@ const ViewContactComponent = () => {
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmedPassword, setConfirmedPassword] = useState("");
-
+    const role = "User";
 
     const handleEmailInput = (e) => {
         let inputEmail = e.target.value;
@@ -31,27 +31,32 @@ const ViewContactComponent = () => {
     };
     const handleConfirmedPasswordInput = (e) => {
         let inputConfirmedPassword = e.target.value;
-        setPassword(inputConfirmedPassword);
+        setConfirmedPassword(inputConfirmedPassword);
     };
 
-    const registerSubmit = async (event) => {
+    const onSubmit = async (event) => {
+        
         event.preventDefault();
-       const register_data = await registerUser({ firstname: this.state.firstname, lastname: this.state.lastname, email:this.state.email, password: this.state.password});
-       if(register_data.status === 200){
-        window.location = "/Home";
-       }else if(register_data.status === 401){
-           alert("Feil Passord!");
+       const register_data = await registerUser({ firstname: firstName,lastname: lastName,email: email,password: password,role: "User"});
+       console.log(register_data);
+       if(password !== confirmedPassword){
+           alert("Passordene stemmer ikke!");
            
-       }else {
+       }else if(register_data.status === 200){
+        const login_result = await login({email,password});
+            if(login_result.status === 200){
+                window.location="/Home";
+        }
+    }else {
         const error = new Error(register_data.error);
         throw error;
        }
       
       }
-
+      
     return (
 
-        <FormStyle className="SignUp">
+        <FormStyle className="SignUp" >
             <p>Registrer deg</p>
             
             <p>Name</p>
@@ -62,7 +67,10 @@ const ViewContactComponent = () => {
             <input type="email" placeholder="Email" onChange={handleEmailInput} value={email} autoComplete="email" required></input>
             <p>Password</p>
             <input type="password" placeholder="Password" onChange={handlePasswordInput} value={password} required></input>
-            <input type="submit" value="Submit"/>
+            <p>Confirm Password</p>
+            <input type="password" placeholder="Confirm Password" onChange={handleConfirmedPasswordInput} value={confirmedPassword} required></input>
+
+            <input type="submit" value="Submit" onClick={onSubmit}/>
         </FormStyle>
 
     )
