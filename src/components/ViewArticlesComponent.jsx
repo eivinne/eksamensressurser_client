@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { HomeHeader, ArticleWrapper, ArticleListElement, ArticleListWrapper } from '../styles/StyledComponents';
 import CreateArticleComponent from './CreateArticleComponent';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
+import PaginationBar from './PaginationBar';
 
 const ViewArticlesComponent = ({ articleList, showArticle }) => {
 
-    const allArticles = articleList;
+    const allArticles = articleList.articles;
     const [filteredArticles, setFilteredArticles] = useState(allArticles);
     const [showArticleDetail, setShowArticleDetail] = useState(showArticle);
     const [selectedArticle, setSelectedArticle] = useState(null);
@@ -14,6 +15,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
     const [chosenCategory, setChosenCategory] = useState("all");
 
     const showArticleView = (id) => {
+        
         allArticles.map( (article) => {
             if(article._id == id) {
                 setSelectedArticle(article);
@@ -21,6 +23,9 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
             }
         })
     };
+    const search = () => {
+            setFilteredArticles(allArticles.filter(article => article.kategori.toLowerCase() === chosenCategory.toLowerCase() || (searchFrase && article.tittel.toLowerCase().includes(searchFrase.toLowerCase()))));
+        }
 
     const backToArticles = () => {
         setShowArticleDetail(false);
@@ -30,9 +35,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
         setShowNewArticle(!showArticle);
     };
 
-    const search = () => {
-            setFilteredArticles(allArticles.filter(article => article.kategori.toLowerCase() === chosenCategory.toLowerCase() || (searchFrase && article.tittel.toLowerCase().includes(searchFrase.toLowerCase()))));
-    }
+    
 
     const handleSearch = (e) => {
         let searchValue = e.target.value;
@@ -62,6 +65,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
                 <option value="Bad">Bad</option>
                 <option value="Hytte">Hytte</option>
             </select>
+            <PaginationBar articles={articleList}></PaginationBar>
             {!showArticleDetail && <ArticleListWrapper>
                 {filteredArticles.slice(0, 5).map( (article) => {
                     return(

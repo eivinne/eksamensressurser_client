@@ -4,6 +4,7 @@ import ViewOfficesByCity from './ViewOfficesByCity'
 import {city, getAllOffices} from "../utils/eventService"
 import Offices from '../views/Offices';
 import listOfOffices from '../data/offices.json';
+import { render } from '@testing-library/react';
 
 
 
@@ -17,6 +18,7 @@ const ViewOfficesComponent = () => {
     const [fredrikstadOffices, setFredrikstadOffices] = useState([]);
     const [haldenOffices, setHaldenOffices] = useState([]);
     const [sarpsborgOffices, setSarpsborgOffices] = useState([]);
+    const [isRendered, setIsRendered] = useState(false);
 
     const sortOfficesByCity = () => {
         allOffices.map((office) => {
@@ -37,8 +39,9 @@ const ViewOfficesComponent = () => {
 
     useEffect(() =>{
         sortOfficesByCity();
+        setIsRendered(true);
       }, []);
-
+    
     return(
         <>
         <div>
@@ -102,7 +105,7 @@ const ViewOfficesComponent = () => {
         </>
     );
 
-};
+}
 
 export default ViewOfficesComponent;
 

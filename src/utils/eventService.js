@@ -20,6 +20,15 @@ export const getAllArticles = async (data) => {
     }
 };
 
+export const getAllArticlesPaginated = async (data) => {
+    try{
+        return await http.get(`${API_ARTICLE_URL}?page=5`);
+    }
+    catch(err){
+        return err.response.data;
+    }
+}
+
 export const getArticle = async (id) => {
     try{
         return await http.get(`${API_ARTICLE_URL}/${id}`);
