@@ -4,8 +4,12 @@ import ViewOfficesByCity from './ViewOfficesByCity'
 import {city, getAllOffices} from "../utils/eventService"
 import Offices from '../views/Offices';
 import listOfOffices from '../data/offices.json';
+<<<<<<< HEAD
+import { render } from '@testing-library/react';
+=======
 import { BsFillGridFill } from "react-icons/bs";
 import { BsList } from "react-icons/bs";
+>>>>>>> 985980afeaa48a75f53cfe05c75519c07ba1fb9d
 
 
 
@@ -19,6 +23,8 @@ const ViewOfficesComponent = () => {
     const [fredrikstadOffices, setFredrikstadOffices] = useState([]);
     const [haldenOffices, setHaldenOffices] = useState([]);
     const [sarpsborgOffices, setSarpsborgOffices] = useState([]);
+    const [isRendered, setIsRendered] = useState(false);
+
     const [itemView, setItemView] = useState("");
     const sortOfficesByCity = () => {
         allOffices.map((office) => {
@@ -46,8 +52,9 @@ const ViewOfficesComponent = () => {
 
     useEffect(() =>{
         sortOfficesByCity();
+        setIsRendered(true);
       }, []);
-
+    
     return(
         <>
         <ViewOfficesDiv>
@@ -119,7 +126,7 @@ const ViewOfficesComponent = () => {
         </>
     );
 
-};
+}
 
 export default ViewOfficesComponent;
 

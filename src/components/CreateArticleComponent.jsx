@@ -13,6 +13,7 @@ const CreateArticleComponent = ({  }) => {
     const [forfatter, setForfatter] = useState("");
     const [kategori, setKategori] = useState("");
     const [message, setMessage] = useState("");
+    const [isSecret, setIsSecret] = useState(false);
 
 
     const handleTittelInput = (e) => {
@@ -46,6 +47,11 @@ const CreateArticleComponent = ({  }) => {
         setDato(newDate)
     }
 
+    const handleIsSecretInput = (e) => {
+        const secretBoolean = e.target.value;
+        setIsSecret(secretBoolean);
+    }
+
     const postArticleToApi = () => {
         handleDate();
         const sendData = async () => {
@@ -55,7 +61,8 @@ const CreateArticleComponent = ({  }) => {
                 innhold: innhold,
                 dato: dato,
                 forfatter: forfatter,
-                kategori: kategori
+                kategori: kategori,
+                isSecret: isSecret
             });
             if (error) {
                 setMessage("Artikkel kunne ikke opprettes");
@@ -92,8 +99,11 @@ const CreateArticleComponent = ({  }) => {
                 <option>Kjøkken</option>
                 <option>Hytte</option>
             </select>
-            <input type="submit" value="Submit"/>
-            <FormButton onClick={postArticleToApi}></FormButton>
+            <select onChange={handleIsSecretInput}>
+                <option value={true}>Hemmelig</option>
+                <option value={false}>Ikke hemmelig</option>
+            </select>
+            <input type="submit" value="Submit" onClick={postArticleToApi}/>
         </FormStyle>
         </>
 
