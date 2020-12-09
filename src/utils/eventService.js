@@ -9,7 +9,6 @@ const API_USER_UPDATE_URL = "/users/update";
 const API_USER_DELETE_URL = "/users/delete";
 const API_USER_AUTHENTICATE_URL = "/users/authenticate";
 const API_USER_CHECK_TOKEN_URL = "/users/checkToken";
-const API_USER_LOGOUT_URL = "/users/logout";
 const API_CONTACT_SEND_URL = "/contact/create";
 
 export const getAllArticles = async (data) => {
@@ -89,16 +88,6 @@ export const login = async (data) => {
         const test = await http.post(`${API_USER_AUTHENTICATE_URL}`, data);
         console.log("test");
         return test
-    }
-    catch(err){
-        return err.respone
-    }
-}
-
-export const logout = async (data) => {
-    try{
-        const logout = await http.post(`${API_USER_LOGOUT_URL}`, data);
-        return logout;
     }
     catch(err){
         return err.respone
