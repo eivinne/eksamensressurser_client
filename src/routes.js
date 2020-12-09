@@ -4,6 +4,7 @@ import SignUp from "./views/SignUp";
 import Login from "./views/Login";
 import Offices from "./views/Offices";
 import Articles from "./views/Articles";
+import createArticle from "./views/CreateArticle";
 import Contact from "./views/Contact";
 import NavBarComponent from "./components/NavBarComponent";
 import ProtectedRoute from "./components/ProtectedRoute";
@@ -39,7 +40,7 @@ const handleLogout = e => {
         <Route exact path="/Offices" component={Offices} />
         <Route exact path="/Articles" component={Articles} />
         <Route exact path="/Contact" component={Contact} />
-
+        <Route exact path="/createArticle" component={createArticle} />
 
         <Route exact path="/Login" component={Login} />
         <Route exact path="/SignUp" component={SignUp} />

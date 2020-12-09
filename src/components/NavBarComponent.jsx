@@ -23,7 +23,7 @@ const NavBarComponent = () => {
             <NavBar>
                 <p>FG</p>
                 <ul>
-                    <li><NavLink activeClassName="active" to="/Login">Login</NavLink></li>
+                    <li className="loginButton"><NavLink activeClassName="active"  to="/Login">Login</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
@@ -36,16 +36,14 @@ const NavBarComponent = () => {
     if(cookies.role === "Admin"){
         return (
             <NavBar>
-                <p>FG</p>
+                <p className="logo">FG</p>
                 <ul>
                     <li><p className="loggOut" onClick={logOutEvent}>Logg out</p></li>
-                    <li><p>{localStorage.getItem('user')}</p></li>
-                    <li><p>|</p></li>
-                    <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
+                    <li className="adminButton"><NavLink activeClassName="active" to="/AdminPanel">Admin Panel</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Contact">Kontakt</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/CreateArticle">Create Article</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
                 </ul>
             </NavBar>
         )
@@ -53,14 +51,16 @@ const NavBarComponent = () => {
     
     else {
         return (
+            
             <NavBar>
                 <p>FG</p>
                 <ul>
-                    <li><p className="loggOut" onClick={logOutEvent}>Logg out</p></li>
-                    <li><p>{localStorage.getItem('user')}</p></li>
+                    <li><p className="loggOut" onClick={logOutEvent}>Logg ut</p></li>
+                    <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
+                    <li><NavLink activeClassName="active" to="/Contact">Kontakt</NavLink></li>
                     <li><p>|</p></li>
-                    <li><NavLink activeClassName="active" to="/CreateArticle">Create Article</NavLink></li>
-                    <li><NavLink activeClassName="active" to="/Home">Home</NavLink></li>
                 </ul>
             </NavBar>
         )

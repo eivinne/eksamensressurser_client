@@ -46,7 +46,7 @@ export default class Login extends Component {
             <p>Passord</p>
             <input type="password" name="password" placeholder="Skriv Inn Passord" value={this.state.password} autoComplete="current-password" onChange={this.handleInputChange} required />
            
-            <input type="submit" value="Submit"/>
+            <input type="submit" className="submitButton" value="Submit"/>
             
             </FormStyle>
 
