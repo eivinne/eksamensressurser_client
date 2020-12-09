@@ -1,30 +1,74 @@
-[
-    {
+{
+    "offices": [
+    {   
+        "id": 1,
         "name": "Rørlegger Mats",
         "address": "Rørveien 2 A",
         "phone": "99203934",
         "city": "Fredrikstad",
         "location": "Østfold"
     },
-    {
+    {   
+        "id": 2,
         "name": "Rørlegger Per",
         "address": "Rørveien 2 A",
         "phone": "99203934",
         "city": "Halden",
         "location": "Østfold"
     },
-    {
+    {   
+        "id": 3,
         "name": "Rørlegger Mats",
         "address": "Rørveien 2 A",
         "phone": "99203934",
         "city": "Fredrikstad",
         "location": "Østfold"
     },
-    {
+    {   
+        "id": 4,
         "name": "Rørlegger Mats",
         "address": "Rørveien 2 A",
         "phone": "99203934",
         "city": "Halden",
         "location": "Østfold"
     }
+],
+"employees": [
+    {
+        "name": "Arne Arnesen",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Bernt Berntsen",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Camilla Collet",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "David Davidsen",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Ester Esteret",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Finn Finnsen",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Gilbert Gilsen",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Harald Haraldsen",
+        "stilling": "Ansatt"
+    },
+    {
+        "name": "Ivar Ivarsen",
+        "stilling": "Ansatt"
+    }
 ]
+}

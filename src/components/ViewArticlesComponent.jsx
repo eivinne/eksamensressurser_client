@@ -3,16 +3,36 @@ import { HomeHeader, ArticleWrapper, ArticleListElement, ArticleListWrapper } fr
 import CreateArticleComponent from './CreateArticleComponent';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import PaginationBar from './PaginationBar';
+import { useCookies} from 'react-cookie';
+
+
+import listOfOffices from '../data/offices.json';
 
 const ViewArticlesComponent = ({ articleList, showArticle }) => {
 
-    const allArticles = articleList.articles;
+    const [allArticles, setAllArticles] = useState(articleList.articles);
+    const [articlesToBeLoaded, setArticlesToBeLoaded] = useState({});
     const [filteredArticles, setFilteredArticles] = useState(allArticles);
     const [showArticleDetail, setShowArticleDetail] = useState(showArticle);
     const [selectedArticle, setSelectedArticle] = useState(null);
     const [showNewArticle, setShowNewArticle] = useState(false);
     const [searchFrase, setSearchFrase] = useState("");
     const [chosenCategory, setChosenCategory] = useState("all");
+
+    const [cookies, setCookie, removeCookie] = useCookies(['token']);
+
+    const [allOffices, setAllOffices] = useState(listOfOffices.offices);
+
+    
+
+    useEffect(() =>{
+
+        console.log(listOfOffices.employees)
+        if(cookies.role != "user") {
+            let articles = allArticles.filter((article) => article.isSecret === false);
+            setFilteredArticles(articles);
+        }
+      }, []);
 
     const showArticleView = (id) => {
         
@@ -23,6 +43,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
             }
         })
     };
+
     const search = () => {
             setFilteredArticles(allArticles.filter(article => article.kategori.toLowerCase() === chosenCategory.toLowerCase() || (searchFrase && article.tittel.toLowerCase().includes(searchFrase.toLowerCase()))));
         }

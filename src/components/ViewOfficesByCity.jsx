@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import ViewOfficeIndividual from "./ViewOfficeIndividual"
+import ViewOfficeIndividual from "./ViewOfficeDetail"
 
 class ViewOfficesByCity extends Component {
     constructor(props) {

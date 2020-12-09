@@ -1,15 +1,12 @@
 import React, {Component, useState, useEffect} from 'react'
-import { ViewOfficesDiv } from '../styles/StyledComponents'
+import { HomeHeader, ViewOfficesDiv } from '../styles/StyledComponents'
 import ViewOfficesByCity from './ViewOfficesByCity'
 import {city, getAllOffices} from "../utils/eventService"
 import Offices from '../views/Offices';
 import listOfOffices from '../data/offices.json';
-<<<<<<< HEAD
-import { render } from '@testing-library/react';
-=======
 import { BsFillGridFill } from "react-icons/bs";
 import { BsList } from "react-icons/bs";
->>>>>>> 985980afeaa48a75f53cfe05c75519c07ba1fb9d
+import ViewOfficeDetail from './ViewOfficeDetail';
 
 
 
@@ -18,14 +15,18 @@ import { BsList } from "react-icons/bs";
 
 const ViewOfficesComponent = () => {
 
-    const [allOffices, setAllOffices] = useState(listOfOffices);
+    const [allOffices, setAllOffices] = useState(listOfOffices.offices);
+    const [allEmployees, setAllEmployees] = useState(listOfOffices.employees);
     const [osloOffices, setOsloOffices] = useState([]);
     const [fredrikstadOffices, setFredrikstadOffices] = useState([]);
     const [haldenOffices, setHaldenOffices] = useState([]);
     const [sarpsborgOffices, setSarpsborgOffices] = useState([]);
     const [isRendered, setIsRendered] = useState(false);
+    const [showDetailView, setShowDetailView] = useState(false);
+    const [selectedOffice, setSelectedOffice] = useState(null);
 
     const [itemView, setItemView] = useState("");
+
     const sortOfficesByCity = () => {
         allOffices.map((office) => {
             if(office.city == "Oslo") {
@@ -42,6 +43,18 @@ const ViewOfficesComponent = () => {
             }
         })
     }
+
+    const showOfficeDetail = (id) => {
+        console.log(id);
+        allOffices.map( (office) => {
+            if(office.id == id) {
+                console.log(office);
+                setSelectedOffice(office);
+                setShowDetailView(true);
+            }
+        })
+    };
+
     const setListView = () =>{
         setItemView("list-element-view-list");
     }
@@ -55,6 +68,7 @@ const ViewOfficesComponent = () => {
         setIsRendered(true);
       }, []);
     
+    if(!showDetailView) {
     return(
         <>
         <ViewOfficesDiv>
@@ -67,7 +81,7 @@ const ViewOfficesComponent = () => {
 
         {fredrikstadOffices.map((office) => {
             return( 
-            <div className={itemView}>
+            <div className={itemView} onClick={() => showOfficeDetail(office.id)}>
                 <ul>
                     <li className="title">{office.name}</li>
                     <li>{office.adress}</li>
@@ -81,7 +95,7 @@ const ViewOfficesComponent = () => {
         <h2>Oslo ({osloOffices.length})</h2>
         {osloOffices.map((office) => {
             return(
-            <div className={itemView}>
+            <div className={itemView} onClick={() => showOfficeDetail(office.id)}>
                 <ul>
                     <li className="title">{office.name}</li>
                     <li>{office.adress}</li>
@@ -96,7 +110,7 @@ const ViewOfficesComponent = () => {
         <h2>Halden ({haldenOffices.length})</h2>
         {haldenOffices.map((office) => {
             return(
-            <div className={itemView}>
+            <div className={itemView} onClick={() => showOfficeDetail(office.id)}>
                 <ul>
                     <li className="title">{office.name}</li>
                     <li>{office.adress}</li>
@@ -110,7 +124,7 @@ const ViewOfficesComponent = () => {
         <h2>Sarpsborg ({sarpsborgOffices.length})</h2>
         {sarpsborgOffices.map((office) => {
             return(
-            <div className={itemView}>
+            <div className={itemView} onClick={() => showOfficeDetail(office.id)}>
                 <ul>
                     <li className="title">{office.name}</li>
                     <li>{office.adress}</li>
@@ -125,7 +139,12 @@ const ViewOfficesComponent = () => {
 
         </>
     );
-
+    }
+    else {
+        return(
+            <ViewOfficeDetail office={selectedOffice}></ViewOfficeDetail>
+        )
+    }
 }
 
 export default ViewOfficesComponent;
