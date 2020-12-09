@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { FormStyle } from '../styles/StyledComponents';
+import {login, sendContactRequest} from '.././utils/eventService';
 
 const ViewContactComponent = () => {
     const [email, setEmail] = useState("");
@@ -12,77 +13,39 @@ const ViewContactComponent = () => {
         setEmail(inputEmail);
     };
 
-    const handleFirstNameInput = (e) => {
+    const handleNameInput = (e) => {
         let inputFirstName = e.target.value;
         setFirstName(inputFirstName);
-    };
-
-    const handleLastNameInput = (e) => {
-        let inputLastName = e.target.value;
-        setLastName(inputLastName);
     };
 
     const handleMessageInput = (e) => {
         let inputMessage = e.target.value;
         setMessage(inputMessage);
     };
-
-    /*const postUserToApi = () => {
-        const sendData = async () => {
-            const { data, error } = await register({
-                email: email,
-                password: password,
-            });
-            if (error) {
-                setMessage("email allready registered");
-            }
-            else {
-                setMessage("User " + email + " created");
-                console.log(data.email);
-                localStorage.clear();
-                localStorage.setItem('user', data.email);
-                localStorage.setItem('id', data._id);
-                window.location = "/Home";
-            }
-        };
-        sendData();
-    }*/
-
-    //needs to write to db
-    /*const registerUser = (e) => {
-        e.preventDefault();
-        if (email !== "" && password !== "" && confirmedPassword !== "") {
-            if (!email.includes("@") && !email.includes(".")) {
-                setMessage("Real email needed")
-            }
-            else if (password !== confirmedPassword) {
-                setMessage("Passwords must match")
-            }
-            //check if user already exist first!!!
-            else { //
-                setUser({
-                    email: email,
-                    password: password,
-                })
-                postUserToApi()
-            }
-        }<FormButton onClick={registerUser}>SignUp</FormButton>
-    };*/
+    
+     
+      const onSubmit = async (event) => {
+        event.preventDefault();
+        const register_data = await sendContactRequest({firstName: firstName,email: email,message:message});
+        console.log(register_data);
+        if(register_data.status === 200){
+             window.location="/Submitted";
+        }
+    } 
 
     return (
 
         <FormStyle className="ContactForm">
             <p>Kontakt oss</p>
             
-            <p>Name</p>
-            <input type="text" placeholder="First name" onChange={handleFirstNameInput} value={firstName} required/>
-            <p>Name</p>
-            <input type="text" placeholder="Last name" onChange={handleLastNameInput} value={firstName} required/>
-            <p>Email</p>
+            <p>Navn</p>
+            <input type="text" placeholder="Skriv inn ditt navn" onChange={handleNameInput} value={firstName} required/>
+            <p>E-Post</p>
             <input type="email" placeholder="Email" onChange={handleEmailInput} value={email} autoComplete="email" required></input>
-            <p>Message</p>
-            <input type="text" placeholder="Message" value={message} onChange={handleMessageInput} required></input>
+            <p>Melding</p>
+            <textarea type="text" rows="10" cols="50" placeholder="Melding" onChange={handleMessageInput} value={message} required/>
             
+            <input type="submit" value="Send" onClick={onSubmit}/>
         </FormStyle>
 
     )

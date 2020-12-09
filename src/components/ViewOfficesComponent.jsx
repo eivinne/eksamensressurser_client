@@ -4,7 +4,12 @@ import ViewOfficesByCity from './ViewOfficesByCity'
 import {city, getAllOffices} from "../utils/eventService"
 import Offices from '../views/Offices';
 import listOfOffices from '../data/offices.json';
+<<<<<<< HEAD
 import { render } from '@testing-library/react';
+=======
+import { BsFillGridFill } from "react-icons/bs";
+import { BsList } from "react-icons/bs";
+>>>>>>> 985980afeaa48a75f53cfe05c75519c07ba1fb9d
 
 
 
@@ -20,6 +25,7 @@ const ViewOfficesComponent = () => {
     const [sarpsborgOffices, setSarpsborgOffices] = useState([]);
     const [isRendered, setIsRendered] = useState(false);
 
+    const [itemView, setItemView] = useState("");
     const sortOfficesByCity = () => {
         allOffices.map((office) => {
             if(office.city == "Oslo") {
@@ -36,6 +42,13 @@ const ViewOfficesComponent = () => {
             }
         })
     }
+    const setListView = () =>{
+        setItemView("list-element-view-list");
+    }
+
+    const setGridView = () => {
+        setItemView("list-element-view-grid");
+    }
 
     useEffect(() =>{
         sortOfficesByCity();
@@ -44,64 +57,72 @@ const ViewOfficesComponent = () => {
     
     return(
         <>
-        <div>
-        <h2>Fredrikstad</h2>
-        <ul>
+        <ViewOfficesDiv>
+        <div className="main-banner">Kontorer</div>
+        <div className="buttons-container">
+        <button className="button-change" onClick={setListView}><BsList /></button>
+        <button className="button-change" onClick={setGridView}><BsFillGridFill/></button>
+        </div>
+        <h2>Fredrikstad ({fredrikstadOffices.length})</h2>
+
         {fredrikstadOffices.map((office) => {
-            return(
-                <li>
-                    <p>{office.name}</p>
-                    <p>{office.adress}</p>
-                    <p>{office.phone}</p>
-                    <p>{office.city}</p>
-                    <p>{office.location}</p>
-                </li>
+            return( 
+            <div className={itemView}>
+                <ul>
+                    <li className="title">{office.name}</li>
+                    <li>{office.adress}</li>
+                    <li>{office.phone}</li>
+                    <li>{office.city}</li>
+                    <li>{office.location}</li>
+                </ul>
+            </div>
             )
         })}
-        </ul>
-        <h2>Oslo</h2>
-        <ul>
+        <h2>Oslo ({osloOffices.length})</h2>
         {osloOffices.map((office) => {
             return(
-                <li>
-                    <p>{office.name}</p>
-                    <p>{office.adress}</p>
-                    <p>{office.phone}</p>
-                    <p>{office.city}</p>
-                    <p>{office.location}</p>
-                </li>
+            <div className={itemView}>
+                <ul>
+                    <li className="title">{office.name}</li>
+                    <li>{office.adress}</li>
+                    <li>{office.phone}</li>
+                    <li>{office.city}</li>
+                    <li>{office.location}</li>
+                </ul>
+            </div>
             )
         })}
-        </ul>
-        <h2>Halden</h2>
-        <ul>
+       
+        <h2>Halden ({haldenOffices.length})</h2>
         {haldenOffices.map((office) => {
             return(
-                <li>
-                    <p>{office.name}</p>
-                    <p>{office.adress}</p>
-                    <p>{office.phone}</p>
-                    <p>{office.city}</p>
-                    <p>{office.location}</p>
-                </li>
+            <div className={itemView}>
+                <ul>
+                    <li className="title">{office.name}</li>
+                    <li>{office.adress}</li>
+                    <li>{office.phone}</li>
+                    <li>{office.city}</li>
+                    <li>{office.location}</li>
+                </ul>
+            </div>
             )
         })}
-        </ul>
-        <h2>Sarpsborg</h2>
-        <ul>
+        <h2>Sarpsborg ({sarpsborgOffices.length})</h2>
         {sarpsborgOffices.map((office) => {
             return(
-                <li>
-                    <p>{office.name}</p>
-                    <p>{office.adress}</p>
-                    <p>{office.phone}</p>
-                    <p>{office.city}</p>
-                    <p>{office.location}</p>
-                </li>
+            <div className={itemView}>
+                <ul>
+                    <li className="title">{office.name}</li>
+                    <li>{office.adress}</li>
+                    <li>{office.phone}</li>
+                    <li>{office.city}</li>
+                    <li>{office.location}</li>
+                </ul>
+            </div>
             )
         })}
-        </ul>
-        </div>
+        </ViewOfficesDiv>
+
         </>
     );
 
