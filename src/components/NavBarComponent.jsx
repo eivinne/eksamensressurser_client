@@ -2,14 +2,20 @@ import React, { Component, useState } from "react";
 import { NavLink } from 'react-router-dom'
 import { NavBar } from '../styles/StyledComponents';
 import {loggoutButton} from '../styles/StyledComponents'
+import {logout} from '../utils/eventService'
+import { Cookies, useCookies,withCookies } from 'react-cookie';
+
 
 
 const NavBarComponent = () => {
-    const loggOut = () => {
-    localStorage.clear();
-    window.location.reload();
-    }
-    if (localStorage.getItem('user') === null) {
+
+ 
+    
+    const [cookieRole] = useCookies(['Role']);
+
+    const logOutEvent = async ()=> await logout();
+
+    if (!cookieRole) {
         return (
             <NavBar>
                 <p>FG</p>
@@ -24,12 +30,12 @@ const NavBarComponent = () => {
             </NavBar>
         )
     }
-    if(localStorage.getItem('user').isAdmin === true){
+    if(cookieRole === "Admin"){
         return (
             <NavBar>
                 <p>FG</p>
                 <ul>
-                    <li><p className="loggOut" onClick={loggOut}>Logg out</p></li>
+                    <li><p className="loggOut" onClick={logOutEvent}>Logg out</p></li>
                     <li><p>{localStorage.getItem('user')}</p></li>
                     <li><p>|</p></li>
                     <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
@@ -47,7 +53,7 @@ const NavBarComponent = () => {
             <NavBar>
                 <p>FG</p>
                 <ul>
-                    <li><p className="loggOut" onClick={loggOut}>Logg out</p></li>
+                    <li><p className="loggOut" onChange={logOutEvent}>Logg out</p></li>
                     <li><p>{localStorage.getItem('user')}</p></li>
                     <li><p>|</p></li>
                     <li><NavLink activeClassName="active" to="/CreateArticle">Create Article</NavLink></li>

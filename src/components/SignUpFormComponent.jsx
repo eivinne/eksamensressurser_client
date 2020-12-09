@@ -8,7 +8,6 @@ const ViewContactComponent = () => {
     const [lastName, setLastName] = useState("");
     const [password, setPassword] = useState("");
     const [confirmedPassword, setConfirmedPassword] = useState("");
-    const role = "User";
 
     const handleEmailInput = (e) => {
         let inputEmail = e.target.value;

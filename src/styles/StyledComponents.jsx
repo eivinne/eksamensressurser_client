@@ -393,16 +393,40 @@ export const ButtonBlue = styled.button`
 
 export const ViewOfficesDiv = styled.div`
 
-    p { 
+    h2 { 
         font-size:3em;
-        font-weight:bold;    
+        font-weight:bold;  
+        margin-left:25px;  
     }
 
-    li{
-        list-style:none;
-        line-height:1.5em;
-    }
+
     
+    ul{
+        padding:10px;
+    }
+    .title{
+        font-weight:bold;
+        font-size:16px;
+    }
+
+    .buttons-container{
+        float:right;
+        padding:20px;
+    }
+
+    .button-change{
+        padding:15px;
+        margin:5px;
+        border:2px solid white;
+        font-size:20px;
+        background-color:white;
+        color:black;
+    }
+
+    .button-change-active{
+        background-color:white;
+        color:#63e8ff;
+    }
     .main-banner{
         width:100%;
         height:400px;
@@ -414,7 +438,6 @@ export const ViewOfficesDiv = styled.div`
     }
     .list-element-view-container{
         display:inline-flex;
-        border-radius:5px;
         border: 2px solid black;
         padding:1em;
         margin:2em;
@@ -423,18 +446,25 @@ export const ViewOfficesDiv = styled.div`
     }
     .list-element-view-grid{
         display:inline-flex;
-        border-radius:5px;
         border: 2px solid black;
         padding:1em;
         margin:2em;
 
     }
+    .list-element-view-grid li{
+        list-style:none;
+        padding:5px;
+ 
+     }
     .list-element-view-list{
         display:block;
-        border-radius:5px;
-        border: 2px solid black;
-        padding:1em;
-        margin:2em;
+        margin:1em;
+
+    }
+    .list-element-view-list li{
+       display:inline;
+       list-style-type:square;
+       padding:5px;
 
     }
     .FilterBox{

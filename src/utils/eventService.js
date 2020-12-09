@@ -9,7 +9,8 @@ const API_USER_UPDATE_URL = "/users/update";
 const API_USER_DELETE_URL = "/users/delete";
 const API_USER_AUTHENTICATE_URL = "/users/authenticate";
 const API_USER_CHECK_TOKEN_URL = "/users/checkToken";
-
+const API_USER_LOGOUT_URL = "/users/logout";
+const API_CONTACT_SEND_URL = "/contact/create";
 
 export const getAllArticles = async (data) => {
     try{
@@ -94,6 +95,16 @@ export const login = async (data) => {
     }
 }
 
+export const logout = async (data) => {
+    try{
+        const logout = await http.post(`${API_USER_LOGOUT_URL}`, data);
+        return logout;
+    }
+    catch(err){
+        return err.respone
+    }
+}
+
 export const checkToken = async (data) => {
     try{
         const test2 =  await http.post(`${API_USER_CHECK_TOKEN_URL}`, data);
@@ -126,6 +137,16 @@ export const deleteUser = async (data, id) => {
 export const updateUser = async (data, id) => {
     try{
         return await http.put(`${API_USER_UPDATE_URL}/${id}`, data);
+    }
+    catch(err){
+        return err.response.data;
+    }
+};
+
+export const sendContactRequest = async (data) => {
+    console.log(data)
+    try{
+        return await http.post(`${API_CONTACT_SEND_URL}`, data);
     }
     catch(err){
         return err.response.data;
