@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { HomeHeader, ArticleWrapper } from '../styles/StyledComponents';
 import UpdateArticleComponent from './UpdateArticleComponent';
-import removeArticle from '../utils/eventService.js';
+import {removeArticle} from '../utils/eventService.js';
 
 const ViewArticleDetailComponent = ({ anArticle, articles, back }) => {
 
@@ -16,7 +16,7 @@ const ViewArticleDetailComponent = ({ anArticle, articles, back }) => {
         setIsArticleBeingEdited(true);
     };
 
-    const handleDelete = async () => {
+    const handleDelete = () => {
         const sendDelete = async () => {
             const { data, error } = await removeArticle(thisArticle._id);
             if (error) {
@@ -26,8 +26,9 @@ const ViewArticleDetailComponent = ({ anArticle, articles, back }) => {
             else {
                 setMessage("Artikkel " + thisArticle.tittel + " slettet");
                 console.log(data)
-            };
-        };
+                window.location = "/Articles";
+            }
+        }
         sendDelete();
     };
 

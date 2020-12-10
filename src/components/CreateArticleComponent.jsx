@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { FormButton, FormArticleStyle } from '../styles/StyledComponents';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import { createArticle } from '../utils/eventService';
+import UploadImageComponent from './UploadImageComponent';
 
 const CreateArticleComponent = ({ article }) => {
 
@@ -14,6 +15,7 @@ const CreateArticleComponent = ({ article }) => {
     const [kategori, setKategori] = useState("");
     const [message, setMessage] = useState("");
     const [isSecret, setIsSecret] = useState(false);
+    const [imageRef, setImageRef] = useState("");
 
 
     const handleTittelInput = (e) => {
@@ -103,6 +105,7 @@ const CreateArticleComponent = ({ article }) => {
                 <option value={true}>Hemmelig</option>
                 <option value={false}>Ikke hemmelig</option>
             </select>
+            <UploadImageComponent></UploadImageComponent>
             <input className="submitButton" type="submit" value="Publiser" onClick={postArticleToApi}/>
         </FormArticleStyle>
         </>

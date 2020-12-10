@@ -4,7 +4,7 @@ const PaginationBar = ({ articles }) => {
 
     const fields = [];
     
-    for (let i = 1; i <= articles.size; i++) {
+    for (let i = 1; i <= articles.pages; i++) {
         fields.push(<p key={i}>{i}</p>);
     }
 

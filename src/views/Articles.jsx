@@ -9,8 +9,7 @@ const Articles = props => {
   const [error, setError] = useState(null);
   const [showArticle, setShowArticle] = useState(false);
 
-  useEffect(() =>{
-
+  useEffect( () => {
     const getArticles = async () => {
       const {data, error} = await getAllArticles();
       if(error){

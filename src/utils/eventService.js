@@ -10,6 +10,8 @@ const API_USER_DELETE_URL = "/users/delete";
 const API_USER_AUTHENTICATE_URL = "/users/authenticate";
 const API_USER_CHECK_TOKEN_URL = "/users/checkToken";
 const API_CONTACT_SEND_URL = "/contact/create";
+const API_UPLOAD_IMAGE_URL = '/image/upload';
+const API_DOWNLOAD_IMAGE_URL = '/image/download';
 
 export const getAllArticles = async (data) => {
     try{
@@ -22,7 +24,7 @@ export const getAllArticles = async (data) => {
 
 export const getAllArticlesPaginated = async (data) => {
     try{
-        return await http.get(`${API_ARTICLE_URL}?page=5`);
+        return await http.get(`${API_ARTICLE_URL}`);
     }
     catch(err){
         return err.response.data;
@@ -95,7 +97,6 @@ export const city = async (city) => {
 export const login = async (data) => {
     try{
         const test = await http.post(`${API_USER_AUTHENTICATE_URL}`, data);
-        console.log("test");
         return test
     }
     catch(err){
@@ -151,6 +152,31 @@ export const sendContactRequest = async (data) => {
     }
 };
 
+export const uploadImage = async (image) => {
+    try {
+      const data = new FormData();
+      data.append('image', image);
+      return await http.post(`${API_UPLOAD_IMAGE_URL}`, data, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
+    } catch (err) {
+      console.log(err);
+      return err.response;
+    }
+  };
+  
+  export const downloadImage = async (id) => {
+    try {
+      return await http.get(`${API_DOWNLOAD_IMAGE_URL}/${id}`, {
+        responseType: 'blob',
+      });
+    } catch (err) {
+      return err.response;
+    }
+  };
+
 
 
 
@@ -169,4 +195,6 @@ export default {
     registerUser,
     updateUser,
     deleteUser,
+    uploadImage,
+    downloadImage,
 };
