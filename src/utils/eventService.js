@@ -22,9 +22,10 @@ export const getAllArticles = async (data) => {
     }
 };
 
-export const getAllArticlesPaginated = async (data) => {
+export const getAllArticlesPaginated = async (page) => {
+    console.log("getAllArticlesPaginated",page)
     try{
-        return await http.get(`${API_ARTICLE_URL}`);
+        return await http.get(`${API_ARTICLE_URL}?page=${page}`);
     }
     catch(err){
         return err.response.data;

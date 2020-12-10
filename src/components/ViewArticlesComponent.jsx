@@ -4,8 +4,10 @@ import CreateArticleComponent from './CreateArticleComponent';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import PaginationBar from './PaginationBar';
 import { useCookies} from 'react-cookie';
+import { getAllArticles, getAllArticlesPaginated } from '../utils/eventService';
 
-const ViewArticlesComponent = ({ articleList, showArticle }) => {
+
+const ViewArticlesComponent = ({ articleList, showArticle, setPage, pageNum }) => {
 
     const [allArticles, setAllArticles] = useState(articleList.articles);
     const [articlesToBeLoaded, setArticlesToBeLoaded] = useState({});
@@ -15,16 +17,10 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
     const [showNewArticle, setShowNewArticle] = useState(false);
     const [searchFrase, setSearchFrase] = useState("");
     const [chosenCategory, setChosenCategory] = useState("all");
+    const [message, setMessage] = useState("");
+    const [error, setError] = useState("");
 
     const [cookies, setCookie, removeCookie] = useCookies(['token']);
-
-    /*useEffect(() =>{
-
-        if(cookies.role != "user") {
-            let articles = allArticles ? allArticles.filter((article) => article.isSecret === false) : [];
-            setFilteredArticles(articles);
-        }
-      }, []);*/
 
     const showArticleView = (id) => {
         
@@ -35,6 +31,21 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
             }
         })
     };
+
+    const reloadArticles = (page) => {
+        console.log("reloadArticles",page)
+        const getArticles = async () => {
+            const {data, error} = await getAllArticlesPaginated(page);
+            console.log(data,error)
+            if(error){
+              setError(error);
+            }
+            else {
+              setFilteredArticles(data.articles);
+            } 
+          };
+          getArticles();
+    }
 
     const search = () => {
             setFilteredArticles(allArticles.filter(article => article.kategori.toLowerCase() === chosenCategory.toLowerCase() || (searchFrase && article.tittel.toLowerCase().includes(searchFrase.toLowerCase()))));
@@ -60,7 +71,6 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
         let category = e.target.value;
         setChosenCategory(category);
         search();
-        console.log(filteredArticles)
     }
 
     
@@ -80,7 +90,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
                 <option value="Hytte">Hytte</option>
             </select>
             </StyledArticleButtons>
-            <PaginationBar articles={articleList}></PaginationBar>
+            <PaginationBar articles={articleList} setPage={setPage} reload={reloadArticles} pageNum={pageNum}></PaginationBar>
             {!showArticleDetail && <ArticleListWrapper>
                 {filteredArticles && filteredArticles.map( (article) => {
                     return(

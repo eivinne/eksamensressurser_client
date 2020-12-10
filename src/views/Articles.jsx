@@ -8,6 +8,7 @@ const Articles = props => {
   const [articles, setArticles] = useState(null);
   const [error, setError] = useState(null);
   const [showArticle, setShowArticle] = useState(false);
+  const [pageNumber, setPageNumber] = useState(1);
 
   useEffect( () => {
     const getArticles = async () => {
@@ -21,10 +22,11 @@ const Articles = props => {
     };
     getArticles();
   }, []);
-        
+
+   
   return (
     <>
-    {articles && <ViewArticlesComponent articleList={articles} showArticle={showArticle}></ViewArticlesComponent>}
+    {articles && <ViewArticlesComponent articleList={articles} showArticle={showArticle} setPage={setPageNumber} pageNumber={pageNumber}></ViewArticlesComponent>}
     </>
   );
 

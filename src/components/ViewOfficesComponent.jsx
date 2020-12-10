@@ -78,7 +78,6 @@ const ViewOfficesComponent = () => {
         <button className="button-change" onClick={setGridView}><BsFillGridFill/></button>
         </div>
         <h2>Fredrikstad ({fredrikstadOffices.length})</h2>
-
         {fredrikstadOffices.map((office) => {
             return( 
             <div className={itemView} onClick={() => showOfficeDetail(office.id)}>
