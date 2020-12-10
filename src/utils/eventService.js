@@ -56,9 +56,9 @@ export const updateArticle = async (data, id) => {
     }
 };
 
-export const removeArticle = async (data, id) => {
+export const removeArticle = async (id) => {
     try{
-        return await http.remove(`${API_ARTICLE_DELETE_URL}/${id}`);
+        return await http.delete(`${API_ARTICLE_DELETE_URL}/${id}`);
     }
     catch(err){
         return err.response.data;
