@@ -22,6 +22,9 @@ const ViewArticlesComponent = ({ articleList, showArticle, setPage, pageNum }) =
 
     const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
+
+    let buttonAdmin ="";
+
     const showArticleView = (id) => {
         
         allArticles.map( (article) => {
@@ -73,16 +76,23 @@ const ViewArticlesComponent = ({ articleList, showArticle, setPage, pageNum }) =
         search();
     }
 
-    
+    if(cookies.role === "Admin"){
+        buttonAdmin = "styledButton-visible";
+        
+    }else {
+       buttonAdmin = "styledButton-hidden";
+    }
     
     
 
     if(!showNewArticle) {
+        
+      
         return (
             <>
             {!showArticleDetail && <HomeHeader>Fagartikler</HomeHeader>}
             <StyledArticleButtons>
-            <button className="styledButton" onClick={newArticle}>Ny artikkel</button>
+            <button className={buttonAdmin} onClick={newArticle}>Ny artikkel</button>
             <input className="searchField" type="text" placeholder="Search.." onChange={handleSearch} value={searchFrase}></input>
             <select className="styledSelect" onClick={handleChosenCategory}>
                 <option value="Kjøkken">Kjøkken</option>
