@@ -5,9 +5,6 @@ import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import PaginationBar from './PaginationBar';
 import { useCookies} from 'react-cookie';
 
-
-import listOfOffices from '../data/offices.json';
-
 const ViewArticlesComponent = ({ articleList, showArticle }) => {
 
     const [allArticles, setAllArticles] = useState(articleList.articles);
@@ -21,13 +18,8 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
 
     const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
-    const [allOffices, setAllOffices] = useState(listOfOffices.offices);
-
-    
-
     useEffect(() =>{
 
-        console.log(listOfOffices.employees)
         if(cookies.role != "user") {
             let articles = allArticles.filter((article) => article.isSecret === false);
             setFilteredArticles(articles);

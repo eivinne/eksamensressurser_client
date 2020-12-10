@@ -2,18 +2,18 @@ import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import { FormButton, FormStyle } from '../styles/StyledComponents';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
-import { createArticle } from '../utils/eventService';
+import { updateArticle } from '../utils/eventService';
 
-const CreateArticleComponent = ({ article }) => {
+const UpdateArticleComponent = ({ article }) => {
 
-    const [tittel, setTittel] = useState("");
-    const [ingress, setIngress] = useState("");
-    const [innhold, setInnhold] = useState("");
-    const [dato, setDato] = useState("fix me");
-    const [forfatter, setForfatter] = useState("");
-    const [kategori, setKategori] = useState("");
+    const [tittel, setTittel] = useState(article.tittel);
+    const [ingress, setIngress] = useState(article.ingress);
+    const [innhold, setInnhold] = useState(article.innhold);
+    const [dato, setDato] = useState(article.dato);
+    const [forfatter, setForfatter] = useState(article.forfatter);
+    const [kategori, setKategori] = useState(article.kategori);
     const [message, setMessage] = useState("");
-    const [isSecret, setIsSecret] = useState(false);
+    const [isSecret, setIsSecret] = useState(article.isSecret);
 
 
     const handleTittelInput = (e) => {
@@ -33,12 +33,10 @@ const CreateArticleComponent = ({ article }) => {
 
     const handleForfatterSelect = (e) => {
         let forfatter = e.target.value;
-        console.log(forfatter)
         setForfatter(forfatter);
     };
     const handleKategoriSelect = (e) => {
         let kategori = e.target.value;
-        console.log(kategori)
         setKategori(kategori);
     };
 
@@ -55,7 +53,7 @@ const CreateArticleComponent = ({ article }) => {
     const postArticleToApi = () => {
         handleDate();
         const sendData = async () => {
-            const { data, error } = await createArticle({
+            const { data, error } = await updateArticle({
                 tittel: tittel,
                 ingress: ingress,
                 innhold: innhold,
@@ -63,13 +61,13 @@ const CreateArticleComponent = ({ article }) => {
                 forfatter: forfatter,
                 kategori: kategori,
                 isSecret: isSecret
-            });
+            }, article._id);
             if (error) {
-                setMessage("Artikkel kunne ikke opprettes");
+                setMessage("Artikkel kunne ikke oppdateres");
                 console.log(error)
             }
             else {
-                setMessage("Artikkel " + tittel + " created");
+                setMessage("Artikkel " + tittel + " oppdatert");
                 console.log(data)
             }
         }
@@ -79,7 +77,7 @@ const CreateArticleComponent = ({ article }) => {
     return (
         <>
         <FormStyle className="NewArticle">
-            <p>Ny Artikkel</p>
+            <p>{article.tittel}</p>
             
             <p>Tittel</p>
             <input type="text" placeholder="Tittel" onChange={handleTittelInput} value={tittel} required/>
@@ -110,4 +108,4 @@ const CreateArticleComponent = ({ article }) => {
     )
 };
 
-export default CreateArticleComponent;
+export default UpdateArticleComponent;
