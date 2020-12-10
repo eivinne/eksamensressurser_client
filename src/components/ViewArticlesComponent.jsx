@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { HomeHeader, ArticleWrapper, ArticleListElement, ArticleListWrapper } from '../styles/StyledComponents';
+import { HomeHeader, StyledArticleButtons, ArticleListElement, ArticleListWrapper } from '../styles/StyledComponents';
 import CreateArticleComponent from './CreateArticleComponent';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import PaginationBar from './PaginationBar';
@@ -64,29 +64,38 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
     }
 
     
-
+    
     
 
     if(!showNewArticle) {
         return (
             <>
             {!showArticleDetail && <HomeHeader>Fagartikler</HomeHeader>}
-            <button onClick={newArticle}>Ny artikkel</button>
+            <StyledArticleButtons>
+            <button className="styledButton" onClick={newArticle}>Ny artikkel</button>
             <input className="searchField" type="text" placeholder="Search.." onChange={handleSearch} value={searchFrase}></input>
-            <select onClick={handleChosenCategory}>
+            <select className="styledSelect" onClick={handleChosenCategory}>
                 <option value="Kjøkken">Kjøkken</option>
                 <option value="Bad">Bad</option>
                 <option value="Hytte">Hytte</option>
             </select>
+            </StyledArticleButtons>
             <PaginationBar articles={articleList}></PaginationBar>
             {!showArticleDetail && <ArticleListWrapper>
                 {filteredArticles && filteredArticles.map( (article) => {
                     return(
                         <ArticleListElement onClick={() => showArticleView(article._id)} >
-                            <div>bilde</div>
-                            <h2>{article.tittel}</h2>
-                            <h4>{article.kategori}</h4>
-                            <p>{article.ingress}</p>
+                            <div className="wrapper">
+                                <div className="left-Section">bilde</div>
+                                <div className="right-section">
+                                    <div className="heading-container">
+                                    <h2>{article.tittel}</h2>
+                                    <h4>{article.kategori}</h4>
+                                    </div>
+                                    <p>{article.ingress}</p>
+                                </div>
+                            </div>
+                            
                         </ArticleListElement>
                     );
                 })}

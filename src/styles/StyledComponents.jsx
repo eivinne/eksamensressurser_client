@@ -56,41 +56,103 @@ export const HomeSection = styled.section`
 `;
 
 export const ArticleListWrapper = styled.article `
-    display: flex;
-    flex-direction: column;
+    display: grid;
 `;
 
 export const ArticleListElement = styled.li `
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-areas: 
-    "leftsection middlesection rightsection"
-    "leftsection lowersection lowersection";
+    position:relative;
     margin: 20px 20% 20px 20%;
     list-style: none;
-
-    div{
-        grid-area: leftsection;
-        background-color: #dbdbdb;
-        height: 300px:
-        width: 300px;
+    .wrapper {
+        display:grid;
+        background-color:white;
+    }
+    .left-section{
+        display:inline-block!important;
+        grid-column:1;
+        grid-row:3;
+        padding:20px;
+        align-self:center;
+        width:20px;
+        height:20px;
+        background-color:black;
+        
     }
 
+    .right-section{
+        grid-column:2;
+        grid-row:1;
+
+    }
+
+    .heading-container{
+        
+    }
+    
+
     h2{
-        grid-area: middlesection;
+        float:left;
+        font-size:35px;
     }
 
     h4{
-        grid-area: rightsection;
+        float:right;
+        font-size:18px;
     }
 
     p{
-        grid-area: lowersection;
+       float:left;
+       font-size:20px;
+       text-align:left;
     }
+
+   
 `;
 
 export const ArticleWrapper = styled.article`
     margin: 0 20% 0 20%;
 
+`;
+
+export const StyledArticleButtons = styled.section`
+    float:right;
+
+    padding:20px;
+    font-size:30px;
+
+    .styledButton{
+        background-color:#75bcd8;
+        font-size:25px;
+        padding:20px;
+        color:white;
+        border:0px solid white;
+        margin:20px;
+
+    }
+    .styledButton:hover{
+        background-color:#8fd6d6;
+    }
+
+    .searchField{
+        padding:20px;
+        font-size:25px;
+        border: 2px solid #8fd6d6!important
+        
+    }
+    .searchField:active{
+        border:2px solid #8fd6d6;
+    }
+    .styledSelect{
+        padding:20px;
+        font-size:25px;
+        border:2px solid #8fd6d6!important;
+        background-color:white;
+        margin-left:10px!important;
+    }
+    .styledSelect:hover{
+        background-color: #8fd6d6;
+        color:white;
+    }
 `;
 
 export const FormArticleStyle = styled.form`
