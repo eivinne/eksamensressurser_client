@@ -112,26 +112,93 @@ export const ArticleListElement = styled.li `
 export const ArticleWrapper = styled.article`
     margin: 0 20% 0 20%;
 
+    .deleteButton-visible{
+        background-color:#d14140;
+        font-size:25px;
+        padding:20px;
+        color:white;
+        border:0px solid white;
+        margin:20px;
+        visibility:visible;
+    }
+    .deleteButton-hidden{
+        visibility:hidden;
+    }
+
+    .deleteButton-visible:hover{
+        opacity:0.5; 
+    }
+    .editButton-visible{
+        background-color:#adad44;
+        font-size:25px;
+        padding:20px;
+        color:white;
+        border:0px solid white;
+        margin:20px;
+        visibility:visible;
+
+    }
+    .editButton-visible:hover{
+        opacity:0.5;
+    }
+
+    .editButton-hidden{
+        visibility:hidden;
+    }
+
 `;
 
-export const StyledArticleButtons = styled.section`
-    float:right;
-
-    padding:20px;
-    font-size:30px;
-
-    .styledButton{
+export const DetailedArticle = styled.section`
+    .backbutton{
+       
         background-color:#75bcd8;
         font-size:25px;
         padding:20px;
         color:white;
         border:0px solid white;
         margin:20px;
+    }
+    .backbutton:hover{
+        opacity:0.5;
+    }
+        
+`;
+
+
+
+export const StyledArticleButtons = styled.section`
+    width:100%;
+    display:block;
+    
+    padding:20px;
+    font-size:30px;
+
+    .styledButton-visible{
+        background-color:#75bcd8;
+        font-size:25px;
+        padding:20px;
+        color:white;
+        border:0px solid white;
+        margin:20px;
+        visibility:visible;
 
     }
-    .styledButton:hover{
+    .styledButton-visibe:hover{
         background-color:#8fd6d6;
     }
+
+
+    .styledButton-hidden{
+        background-color:#75bcd8;
+        font-size:25px;
+        padding:20px;
+        color:white;
+        border:0px solid white;
+        margin:20px;
+        visibility:hidden;
+
+    }
+    
 
     .searchField{
         padding:20px;
@@ -198,6 +265,13 @@ export const FormArticleStyle = styled.form`
         background-color:#75bcd8;
         font-size:20px;
     }
+`;
+
+export const PaginationBarStyle = styled.section`
+        p{
+            display:inline-flex;
+        }
+
 `;
 export const Footer = styled.form`
     margin-top: 1rem;
@@ -699,6 +773,34 @@ export const ViewOfficesDiv = styled.div`
 
 
     
+`;
+
+export const OfficeDetailView = styled.article`
+        ul{
+            list-style:none;
+        }
+        .wrapper{
+            display:inline-flex;
+            flex-direction:row;
+        }
+        .bottom-banner{
+            width:100%;
+            height:300px;
+            line-height:300px;
+            vertical-align:middle;
+        }
+        .imagebox{
+            display:block;
+            text-align:center;
+            background-color:#dbdbdb;
+            width:100px;
+            height:100px;
+            margin:20px;
+        }
+
+        p{
+            padding:10px;
+        }
 `;
 
 export const UndetailedPollSectionWrapper = styled.section`

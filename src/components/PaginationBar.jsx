@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import {PaginationBarStyle} from '../styles/StyledComponents'
 
 const PaginationBar = ({ articles }) => {
 
@@ -9,9 +10,13 @@ const PaginationBar = ({ articles }) => {
     }
 
     return (
+        <>
+        <PaginationBarStyle>
         <span>
-            test{fields}
+            {fields}
         </span>
+        </PaginationBarStyle>
+        </>
     )
 };
 

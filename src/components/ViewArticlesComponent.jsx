@@ -18,8 +18,14 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
 
     const [cookies, setCookie, removeCookie] = useCookies(['token']);
 
-    /*useEffect(() =>{
 
+    let buttonAdmin ="";
+
+
+    
+
+
+    useEffect(() =>{
         if(cookies.role != "user") {
             let articles = allArticles ? allArticles.filter((article) => article.isSecret === false) : [];
             setFilteredArticles(articles);
@@ -63,16 +69,23 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
         console.log(filteredArticles)
     }
 
-    
+    if(cookies.role === "Admin"){
+        buttonAdmin = "styledButton-visible";
+        
+    }else {
+       buttonAdmin = "styledButton-hidden";
+    }
     
     
 
     if(!showNewArticle) {
+        
+      
         return (
             <>
             {!showArticleDetail && <HomeHeader>Fagartikler</HomeHeader>}
             <StyledArticleButtons>
-            <button className="styledButton" onClick={newArticle}>Ny artikkel</button>
+            <button className={buttonAdmin} onClick={newArticle}>Ny artikkel</button>
             <input className="searchField" type="text" placeholder="Search.." onChange={handleSearch} value={searchFrase}></input>
             <select className="styledSelect" onClick={handleChosenCategory}>
                 <option value="Kjøkken">Kjøkken</option>
