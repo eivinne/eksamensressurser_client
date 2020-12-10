@@ -137,7 +137,22 @@ export const FormArticleStyle = styled.form`
         font-size:20px;
     }
 `;
+export const Footer = styled.form`
+    width:100%;
+    height:50px;
+    
 
+    ul{
+        text-align:center;
+    }
+    
+    li{
+        display:inline-flex;
+        text-align:center;
+        list-style:none;
+        padding:10px;
+    }
+`;
 
 export const FormContactStyle = styled.form`
     display: flex;
