@@ -5,7 +5,7 @@ const SignUp = (loggedInn) => {
   return (
     <>
     <SignUpFormComponent></SignUpFormComponent>
-    <Footer></Footer>
+    
     </>
   );
 };
