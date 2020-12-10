@@ -3,9 +3,7 @@ import { HomeHeader, ArticleWrapper,DetailedArticle } from '../styles/StyledComp
 import UpdateArticleComponent from './UpdateArticleComponent';
 import {removeArticle} from '../utils/eventService.js';
 
-import removeArticle from '../utils/eventService.js';
 import { Cookies, useCookies } from 'react-cookie';
->>>>>>> Edited styles on all
 
 const ViewArticleDetailComponent = ({ anArticle, articles, back }) => {
 
@@ -26,7 +24,6 @@ const ViewArticleDetailComponent = ({ anArticle, articles, back }) => {
 
 
     const handleDelete = async () => {
->>>>>>> Edited styles on all
         const sendDelete = async () => {
             const { data, error } = await removeArticle(thisArticle._id);
             if (error) {

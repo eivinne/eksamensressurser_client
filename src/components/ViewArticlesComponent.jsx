@@ -25,12 +25,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
     
 
 
-    useEffect(() =>{
-        if(cookies.role != "user") {
-            let articles = allArticles ? allArticles.filter((article) => article.isSecret === false) : [];
-            setFilteredArticles(articles);
-        }
-      }, []);*/
+   
 
     const showArticleView = (id) => {
         

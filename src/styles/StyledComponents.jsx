@@ -169,7 +169,6 @@ export const DetailedArticle = styled.section`
 export const StyledArticleButtons = styled.section`
     width:100%;
     display:block;
-    
     padding:20px;
     font-size:30px;
 
@@ -270,7 +269,25 @@ export const FormArticleStyle = styled.form`
 export const PaginationBarStyle = styled.section`
         p{
             display:inline-flex;
+            text-align:center;
+            background-color:#469fb9;
+            padding:20px;
+            color:white;
         }
+        p:hover{
+            background-color:#75bcd8;
+            cursor:pointer;
+            
+        }
+        p:active{
+            background-color:#75bcd8;
+            color:white;
+            border: 1px solid black;
+        }
+        padding:20px;
+        text-align:center;
+        
+
 
 `;
 export const Footer = styled.form`
