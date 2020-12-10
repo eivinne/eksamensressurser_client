@@ -3,7 +3,6 @@ import { HomeHeader, ArticleWrapper,DetailedArticle } from '../styles/StyledComp
 import UpdateArticleComponent from './UpdateArticleComponent';
 import {removeArticle} from '../utils/eventService.js';
 
-import removeArticle from '../utils/eventService.js';
 import { Cookies, useCookies } from 'react-cookie';
 
 const ViewArticleDetailComponent = ({ anArticle, articles, back }) => {

@@ -25,6 +25,12 @@ const ViewArticlesComponent = ({ articleList, showArticle, setPage, pageNum }) =
 
     let buttonAdmin ="";
 
+
+    
+
+
+   
+
     const showArticleView = (id) => {
         
         allArticles.map( (article) => {
