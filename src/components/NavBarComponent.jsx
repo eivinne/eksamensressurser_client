@@ -23,7 +23,7 @@ const NavBarComponent = () => {
             <NavBar>
                 <p>FG</p>
                 <ul>
-                    <li className="loginButton"><NavLink activeClassName="active"  to="/Login">Login</NavLink></li>
+                    <li><NavLink to="/Login"><p className="loginbutton">Login</p></NavLink></li>
                     <li><NavLink activeClassName="active" to="/Home">Hjem</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Offices">Kontorer</NavLink></li>
                     <li><NavLink activeClassName="active" to="/Articles">Fagartikler</NavLink></li>
@@ -63,6 +63,7 @@ const NavBarComponent = () => {
                     <li><p>|</p></li>
                 </ul>
             </NavBar>
+            
         )
     }
 }
