@@ -7,6 +7,8 @@ export const HomeHeader = styled.header`
     background-color: #dbdbdb;
     width: 100%;
     height: 300px;
+    font-size:30px;
+    font-weight:bold;
 `;
 
 export const HomeSection = styled.section`
@@ -23,25 +25,32 @@ export const HomeSection = styled.section`
         justify-content: center;
         align-items: center;
         background-color: #dbdbdb;
-        background-color: #dbdbdb;   
+        background-color: #dbdbdb;
+           
     }
 
     .gridBox1 {
         grid-area: leftsection;
         height: 300px;
         margin-right: 3em;
+        font-size:30px;
+        font-weight:bold;
 
     }
 
     .gridBox2 {
         grid-area: rightsection;
         height: 300px;
+        font-size:30px;
+        font-weight:bold;
     }
 
     .gridBox3 {
         grid-area: lowersection;
         height: 300px;
         margin-top: 3em;
+        font-size:30px;
+        font-weight:bold;
     }
     
 `;
@@ -84,6 +93,118 @@ export const ArticleWrapper = styled.article`
 
 `;
 
+export const FormArticleStyle = styled.form`
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #474747;
+    border-radius: 2px;
+    width: 600px;
+    margin: 0 auto;
+    height: 1000px;
+    margin-top: 100px;
+
+    &>*{
+        border: 0px solid transparent;
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        height: 30px;
+        border-radius: 5px;
+    }
+    &>p:first-of-type{
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+        font-size: x-large;
+        border-radius: 0;
+    }
+    &>input{
+        box-shadow: 0.5px 0.5px 2px black;
+    }
+    &>textarea{
+        box-shadow: 0.5px 0.5px 2px black;
+        min-width:200px;
+        min-height:200px;
+    }
+
+    .submitButton{
+        background-color:#469fb9;
+        color:white;
+    }
+    .submitButton:hover{
+        background-color:#75bcd8;
+        font-size:20px;
+    }
+`;
+export const Footer = styled.form`
+    margin-top: 1rem;
+    padding: 1rem;
+    background-color:#f2f2f2;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    
+    
+
+    ul{
+        text-align:center;
+        padding-inline-start:0px;
+    
+    }
+    
+    li{
+        display:inline-flex;
+        text-align:center;
+        list-style:none;
+        padding:10px;
+    }
+`;
+
+export const FormContactStyle = styled.form`
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    color: #474747;
+    border-radius: 2px;
+    width: 600px;
+    margin: 0 auto;
+    height: 1000px;
+    margin-top: 100px;
+
+    &>*{
+        border: 0px solid transparent;
+        width: 500px;
+        margin: 0 auto;
+        margin-top: 15px;
+        margin-bottom: 5px;
+        height: 30px;
+        border-radius: 5px;
+    }
+    &>p:first-of-type{
+        padding-bottom: 10px;
+        border-bottom: 1px solid white;
+        font-size: x-large;
+        border-radius: 0;
+    }
+    &>input{
+        box-shadow: 0.5px 0.5px 2px black;
+    }
+    &>textarea{
+        box-shadow: 0.5px 0.5px 2px black;
+        min-width:200px;
+        min-height:200px;
+    }
+
+    .submitButton{
+        background-color:#469fb9;
+        color:white;
+    }
+    .submitButton:hover{
+        background-color:#75bcd8;
+        font-size:20px;
+    }
+`;
 
 export const FormStyle = styled.form`
     display: flex;
@@ -93,10 +214,8 @@ export const FormStyle = styled.form`
     border-radius: 2px;
     width: 350px;
     margin: 0 auto;
-    height: 500px;
+    height: 650px;
     margin-top: 100px;
-    background-color: #f2f2f2;
-    box-shadow: 5px 5px 5px grey;
 
     &>*{
         border: 0px solid transparent;
@@ -115,6 +234,15 @@ export const FormStyle = styled.form`
     }
     &>input{
         box-shadow: 0.5px 0.5px 2px black;
+    }
+
+    .submitButton{
+        background-color:#469fb9;
+        color:white;
+    }
+    .submitButton:hover{
+        background-color:#75bcd8;
+        font-size:20px;
     }
 `;
 
@@ -145,7 +273,7 @@ export const NavBar = styled.nav`
     
     flex-wrap: wrap;
     box-shadow: 0px 2px 3px black;
-
+    
     ul{
         display: flex;
         list-style: none;
@@ -200,10 +328,34 @@ export const NavBar = styled.nav`
         }
     }
 
+    .loginbutton{
+        background-color: #469fb9;
+        color: white;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        margin: 0px;
+        padding: 0px;
+    }
+    .loginbutton:hover{
+        cursor: pointer;
+        background-color:#75bcd8;
+    }
+    .loggOut{
+        background-color: #469fb9;
+        color: white;
+        width: 100px;
+        text-align: center;
+        line-height: 50px;
+        margin: 0px;
+        padding: 0px;
+    }
+    }
     .loggOut:hover{
         cursor: pointer;
-        border-bottom: 1px solid white;
+        background-color:#75bcd8;
     }
+
 `;
 
 export const CreatePollForm = styled.form`

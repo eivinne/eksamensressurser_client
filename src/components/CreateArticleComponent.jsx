@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { FormButton, FormStyle } from '../styles/StyledComponents';
+import { FormButton, FormArticleStyle } from '../styles/StyledComponents';
 import ViewArticleDetailComponent from './ViewArticleDetailComponent';
 import { createArticle } from '../utils/eventService';
 
@@ -78,7 +78,7 @@ const CreateArticleComponent = ({ article }) => {
 
     return (
         <>
-        <FormStyle className="NewArticle">
+        <FormArticleStyle className="NewArticle">
             <p>Ny Artikkel</p>
             
             <p>Tittel</p>
@@ -86,7 +86,7 @@ const CreateArticleComponent = ({ article }) => {
             <p>Ingress</p>
             <input type="text" placeholder="Ingress" onChange={handleIngressInput} value={ingress} required/>
             <p>Innhold</p>
-            <input type="text" placeholder="Innhold" onChange={handleInnholdInput} value={innhold} required></input>
+            <textarea type="text" rows="10" columns="40" placeholder="Innhold" onChange={handleInnholdInput} value={innhold} required></textarea>
             <p>Forfatter</p>
             <select onChange={handleForfatterSelect} required>
                 <option>Lars Larsen</option>
@@ -103,8 +103,8 @@ const CreateArticleComponent = ({ article }) => {
                 <option value={true}>Hemmelig</option>
                 <option value={false}>Ikke hemmelig</option>
             </select>
-            <input type="submit" value="Submit" onClick={postArticleToApi}/>
-        </FormStyle>
+            <input className="submitButton" type="submit" value="Publiser" onClick={postArticleToApi}/>
+        </FormArticleStyle>
         </>
 
     )

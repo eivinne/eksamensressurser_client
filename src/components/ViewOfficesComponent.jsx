@@ -25,7 +25,7 @@ const ViewOfficesComponent = () => {
     const [showDetailView, setShowDetailView] = useState(false);
     const [selectedOffice, setSelectedOffice] = useState(null);
 
-    const [itemView, setItemView] = useState("");
+    const [itemView, setItemView] = useState("list-element-view-grid");
 
     const sortOfficesByCity = () => {
         allOffices.map((office) => {

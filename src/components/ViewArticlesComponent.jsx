@@ -21,7 +21,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
     useEffect(() =>{
 
         if(cookies.role != "user") {
-            let articles = allArticles.filter((article) => article.isSecret === false);
+            let articles = allArticles ? allArticles.filter((article) => article.isSecret === false) : [];
             setFilteredArticles(articles);
         }
       }, []);
@@ -80,7 +80,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
             </select>
             <PaginationBar articles={articleList}></PaginationBar>
             {!showArticleDetail && <ArticleListWrapper>
-                {filteredArticles.slice(0, 5).map( (article) => {
+                {filteredArticles && filteredArticles.slice(0,5).map( (article) => {
                     return(
                         <ArticleListElement onClick={() => showArticleView(article._id)} >
                             <div>bilde</div>
@@ -102,6 +102,7 @@ const ViewArticlesComponent = ({ articleList, showArticle }) => {
             </>
         )
     };
+    
 }
 
 export default ViewArticlesComponent;

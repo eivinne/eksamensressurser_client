@@ -69,7 +69,7 @@ const ViewContactComponent = () => {
             <p>Confirm Password</p>
             <input type="password" placeholder="Confirm Password" onChange={handleConfirmedPasswordInput} value={confirmedPassword} required></input>
 
-            <input type="submit" value="Submit" onClick={onSubmit}/>
+            <input type="submit" className="submitButton" value="Submit" onClick={onSubmit}/>
         </FormStyle>
 
     )

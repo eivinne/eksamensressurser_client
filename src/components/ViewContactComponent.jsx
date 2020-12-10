@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { FormStyle } from '../styles/StyledComponents';
+import { FormContactStyle,HomeHeader } from '../styles/StyledComponents';
 import {login, sendContactRequest} from '.././utils/eventService';
 
 const ViewContactComponent = () => {
@@ -34,8 +34,9 @@ const ViewContactComponent = () => {
     } 
 
     return (
-
-        <FormStyle className="ContactForm">
+        <>
+      <HomeHeader>Kontakt Oss</HomeHeader>
+        <FormContactStyle className="ContactForm">
             <p>Kontakt oss</p>
             
             <p>Navn</p>
@@ -45,9 +46,9 @@ const ViewContactComponent = () => {
             <p>Melding</p>
             <textarea type="text" rows="10" cols="50" placeholder="Melding" onChange={handleMessageInput} value={message} required/>
             
-            <input type="submit" value="Send" onClick={onSubmit}/>
-        </FormStyle>
-
+            <input type="submit" className="submitButton" value="Send" onClick={onSubmit}/>
+        </FormContactStyle>
+        </>
     )
 }
 export default ViewContactComponent;
